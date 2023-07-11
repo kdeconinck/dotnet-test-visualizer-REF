@@ -27,7 +27,13 @@
 // More information regarding this format can be found @ https://xunit.net/docs/format-xml-v2.
 package xunit
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"fmt"
+	"strings"
+
+	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/camelcase"
+)
 
 // The .NET test result(s) in xUnit's v2+ XML format.
 type Result struct {
@@ -50,7 +56,7 @@ type Assembly struct {
 	FailedCount     int          `xml:"failed,attr"`
 	FinishRTF       string       `xml:"finish-rtf,attr"`
 	Id              string       `xml:"id,attr"`
-	Name            string       `xml:"name,attr"`
+	FullName        string       `xml:"name,attr"`
 	NotRunCount     int          `xml:"not-run,attr"`
 	PassedCount     int          `xml:"passed,attr"`
 	RunDate         string       `xml:"run-date,attr"`
@@ -130,4 +136,167 @@ type ErrorSet struct {
 type Error struct {
 	Name string `xml:"name,attr"`
 	Type string `xml:"type,attr"`
+}
+
+// Name returns the name and the extension of the assembly.
+func (assembly *Assembly) Name() string {
+	if strings.Contains(assembly.FullName, "/") {
+		return assembly.FullName[strings.LastIndex(assembly.FullName, "/")+1:]
+	}
+
+	return assembly.FullName[strings.LastIndex(assembly.FullName, "\\")+1:]
+}
+
+// UniqueTraits returns the unique traits over a single assembly.
+func (assembly *Assembly) UniqueTraits() []Trait {
+	resultSet := make([]Trait, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			for _, trait := range test.TraitSet.Traits {
+				isTraitAlreadyFound := false
+				for _, result := range resultSet {
+					if result.Name == trait.Name && result.Value == trait.Value {
+						isTraitAlreadyFound = true
+						break
+					}
+				}
+
+				if !isTraitAlreadyFound {
+					resultSet = append(resultSet, trait)
+				}
+			}
+		}
+
+	}
+
+	return resultSet
+}
+
+// NonNestedTests returns all the NON nested test(s) of an assembly.
+func (assembly *Assembly) NonNestedTests() []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if !test.isNested() {
+				resultSet = append(resultSet, test)
+			}
+		}
+
+		resultSet = append(resultSet, collection.Tests...)
+	}
+
+	return resultSet
+}
+
+// NestedTests returns all the nested test(s) of an assembly.
+func (assembly *Assembly) NestedTests() []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if test.isNested() {
+				resultSet = append(resultSet, test)
+			}
+		}
+
+		resultSet = append(resultSet, collection.Tests...)
+	}
+
+	return resultSet
+}
+
+// NonNestedTestsWithoutTraits returns all the NON nested test(s) of an assembly NOT belonging to any trait.
+func (assembly *Assembly) NonNestedTestsWithoutTraits() []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if !test.isNested() && len(test.TraitSet.Traits) == 0 {
+				resultSet = append(resultSet, test)
+			}
+		}
+	}
+
+	return resultSet
+}
+
+// NestedTestsWithoutTraits returns all the nested test(s) of an assembly NOT belonging to any trait.
+func (assembly *Assembly) NestedTestsWithoutTraits() []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if test.isNested() && len(test.TraitSet.Traits) == 0 {
+				resultSet = append(resultSet, test)
+			}
+		}
+	}
+
+	return resultSet
+}
+
+// NonNestedTestsForTrait returns all the NON nested test(s) of an assembly belonging to the given trait.
+func (assembly *Assembly) NonNestedTestsForTrait(trait Trait) []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if !test.isNested() {
+				for _, testTrait := range test.TraitSet.Traits {
+					if testTrait.Name == trait.Name && testTrait.Value == trait.Value {
+						resultSet = append(resultSet, test)
+					}
+				}
+			}
+		}
+	}
+
+	return resultSet
+}
+
+// NestedTestsForTrait returns all the nested test(s) of an assembly belonging to the given trait.
+func (assembly *Assembly) NestedTestsForTrait(trait Trait) []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if test.isNested() {
+				for _, testTrait := range test.TraitSet.Traits {
+					if testTrait.Name == trait.Name && testTrait.Value == trait.Value {
+						resultSet = append(resultSet, test)
+					}
+				}
+			}
+		}
+	}
+
+	return resultSet
+}
+
+// String returns the human-readble version of test.
+func (test *Test) String() string {
+	if test.Result == "Pass" {
+		return fmt.Sprintf("\033[1;32m ✓ \033[0m %s (%v seconds)", test.FriendlyName(), test.Time)
+	}
+
+	return fmt.Sprintf("\033[1;31m ⛌ \033[0m %s (%v seconds)", test.FriendlyName(), test.Time)
+}
+
+// TestName returns the name of the test.
+func (test *Test) TestName() string {
+	testPrefix := fmt.Sprintf("%s.", test.Type)
+
+	return strings.TrimPrefix(test.Name, testPrefix)
+}
+
+// FriendlyName returns the human-reable version of the name of the test.
+func (test *Test) FriendlyName() string {
+	return strings.Join(camelcase.Split(test.TestName()), " ")
+}
+
+// Returns `true` if test is a nested one, `false` otherwise.
+func (test *Test) isNested() bool {
+	return strings.Contains(test.Name, "+")
 }
