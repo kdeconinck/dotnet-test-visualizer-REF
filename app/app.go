@@ -31,6 +31,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/camelcase"
@@ -101,6 +102,12 @@ func main() {
 
 		resultTree := assembly.BuildTree()
 
+		keys := make([]string, 0)
+		for k := range resultTree {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+
 		// // First, we loop over all the test(s) that doesn't contain any nesting.
 		// for _, test := range resultTree.Tests {
 		// 	status := "\033[1;32m✓\033[0m"
@@ -118,11 +125,12 @@ func main() {
 		// }
 
 		// Print data about the test(s) that contains nesting.
-		for trait, nodes := range resultTree {
-			// Print the trait that's being processed.
-			fmt.Printf("  %s\r\n", trait)
+		for _, k := range keys {
+			for _, node := range resultTree[k] {
+				// Print the trait that's being processed.
+				fmt.Printf("  %s\r\n", k)
 
-			for _, node := range nodes {
+				// for _, node := range nodes {
 				for _, test := range node.Tests {
 					status := "\033[1;32m✓\033[0m"
 					if test.Result != "Pass" {
@@ -136,13 +144,16 @@ func main() {
 					} else {
 						fmt.Printf("    🐌 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
 					}
-					// }
-					// for _, node := range tree.Children {
-					// 	fmt.Println("")
-					// 	PrintTree(node, "")
 				}
-			}
 
+				// Travel over all the nested test(s).
+				for _, node := range node.Children {
+					fmt.Println("")
+					PrintTree(node, "")
+				}
+				// }
+
+			}
 		}
 
 		// 	// When NO traits have been found, just display the results of all the test(s), otherwise, group them by their

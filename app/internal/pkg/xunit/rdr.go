@@ -165,9 +165,53 @@ func (assembly *Assembly) getNameWithoutExtension() string {
 func (assembly *Assembly) BuildTree() map[string][]*Node {
 	mapSet := make(map[string][]*Node)
 
+	root := &Node{Name: ""}
+	resultSet := make([]*Node, 0)
+
+	for _, item := range assembly.testsWithoutTraits() {
+		currentNode := root
+
+		if item.HasDisplayName() {
+			currentNode.Tests = append(currentNode.Tests, item)
+		} else if !item.HasDisplayName() && !item.isNested() {
+			currentNode.Tests = append(currentNode.Tests, item)
+		} else if item.isNested() {
+			parts := make([]string, 0)
+			fullNameParts := strings.Split(item.Name, "+")
+			parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
+			parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")[0])
+
+			for idx, part := range parts {
+				var childNode *Node
+
+				for _, child := range currentNode.Children {
+					if child.Name == part {
+						childNode = child
+						break
+					}
+				}
+
+				if childNode == nil {
+					childNode = &Node{Name: part}
+					if idx == len(parts)-1 {
+						childNode.Tests = append(childNode.Tests, item)
+					}
+
+					currentNode.Children = append(currentNode.Children, childNode)
+				}
+
+				currentNode = childNode
+			}
+		}
+	}
+
+	resultSet = append(resultSet, root)
+	mapSet[""] = resultSet
+
 	for _, trait := range assembly.UniqueTraits() {
 		root := &Node{Name: ""}
 		resultSet := make([]*Node, 0)
+
 		for _, item := range assembly.testsForTrait(trait) {
 			currentNode := root
 
@@ -317,6 +361,21 @@ func (assembly *Assembly) NestedTests() []Test {
 		}
 
 		resultSet = append(resultSet, collection.Tests...)
+	}
+
+	return resultSet
+}
+
+// NonNestedTestsWithoutTraits returns all the NON nested test(s) of an assembly NOT belonging to any trait.
+func (assembly *Assembly) testsWithoutTraits() []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			if len(test.TraitSet.Traits) == 0 {
+				resultSet = append(resultSet, test)
+			}
+		}
 	}
 
 	return resultSet
