@@ -97,57 +97,107 @@ func main() {
 		fmt.Printf("  # Errors:       %v\r\n", assembly.ErrorCount)
 		fmt.Println("")
 
-		uniqueTraits := assembly.UniqueTraits()
+		resultTree := assembly.BuildTree()
 
-		// When NO traits have been found, just display the results of all the test(s), otherwise, group them by their
-		// trait first followed by the remaining tests that doesn't have a trait.
-		if len(uniqueTraits) == 0 {
-			displayTestResults(assembly.NonNestedTests())
-			displayTreeTestResults(assembly.NestedTests())
-		} else {
-			for _, trait := range assembly.UniqueTraits() {
-				fmt.Printf("  %s: %s\r\n", trait.Name, trait.Value)
-				fmt.Println("")
-
-				displayTestResults(assembly.NonNestedTestsForTrait(trait))
-				displayTreeTestResults(assembly.NestedTestsForTrait(trait))
-				fmt.Println("")
-				fmt.Println("")
+		// First, we loop over all the test(s) that doesn't contain any nesting.
+		for _, test := range resultTree.Tests {
+			status := "\033[1;32m✓\033[0m"
+			if test.Result != "Pass" {
+				status = "\033[1;31m⛌\033[0m"
 			}
 
-			displayTestResults(assembly.NonNestedTestsWithoutTraits())
-			displayTreeTestResults(assembly.NestedTestsWithoutTraits())
+			if test.Time <= tresholdFast {
+				fmt.Printf("    🚀 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+			} else if test.Time <= tresholdNormal {
+				fmt.Printf("    🕐 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+			} else {
+				fmt.Printf("    🐌 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+			}
+		}
+
+		// // Print ALL the data that's present in the tree.
+		for _, node := range resultTree.Children {
 			fmt.Println("")
+			PrintTree(node, "")
 		}
+
+		// 	uniqueTraits := assembly.UniqueTraits()
+
+		// 	// When NO traits have been found, just display the results of all the test(s), otherwise, group them by their
+		// 	// trait first followed by the remaining tests that doesn't have a trait.
+		// 	if len(uniqueTraits) == 0 {
+		// 		displayTestResults(assembly.NonNestedTests())
+		// 		displayTreeTestResults(assembly.NestedTests())
+		// 	} else {
+		// 		for _, trait := range assembly.UniqueTraits() {
+		// 			fmt.Printf("  %s: %s\r\n", trait.Name, trait.Value)
+		// 			fmt.Println("")
+
+		// 			displayTestResults(assembly.NonNestedTestsForTrait(trait))
+		// 			displayTreeTestResults(assembly.NestedTestsForTrait(trait))
+		// 			fmt.Println("")
+		// 			fmt.Println("")
+		// 		}
+
+		// 		displayTestResults(assembly.NonNestedTestsWithoutTraits())
+		// 		displayTreeTestResults(assembly.NestedTestsWithoutTraits())
+		// 		fmt.Println("")
+		// 	}
 	}
 }
 
-// Displays the results of the given tests.
-func displayTestResults(tests []xunit.Test) {
-	for _, test := range tests {
+func PrintTree(node *xunit.Node, indent string) {
+	fmt.Printf("%s         %s\r\n", indent, node.Name)
+	for _, test := range node.Tests {
+		status := "\033[1;32m✓\033[0m"
+		if test.Result != "Pass" {
+			status = "\033[1;31m⛌\033[0m"
+		}
+
 		if test.Time <= tresholdFast {
-			fmt.Printf("    🚀 %s\r\n", test.String())
+			fmt.Printf("    🚀 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
 		} else if test.Time <= tresholdNormal {
-			fmt.Printf("    🕐 %s\r\n", test.String())
+			fmt.Printf("    🕐 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
 		} else {
-			fmt.Printf("    🐌 %s\r\n", test.String())
+			fmt.Printf("    🐌 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
 		}
+	}
+
+	if len(node.Tests) > 0 {
+		fmt.Println("")
+	}
+
+	for _, child := range node.Children {
+		PrintTree(child, indent+"  ")
 	}
 }
 
-// Displays the results of the given tests as a tree.
-func displayTreeTestResults(tests []xunit.Test) {
-	for _, test := range tests {
-		fmt.Println(test.Name)
-		// if test.Time <= tresholdFast {
-		// 	fmt.Printf("    🚀 %s\r\n", test.String())
-		// } else if test.Time <= tresholdNormal {
-		// 	fmt.Printf("    🕐 %s\r\n", test.String())
-		// } else {
-		// 	fmt.Printf("    🐌 %s\r\n", test.String())
-		// }
-	}
-}
+// // Displays the results of the given tests.
+// func displayTestResults(tests []xunit.Test) {
+// 	for _, test := range tests {
+// 		if test.Time <= tresholdFast {
+// 			fmt.Printf("    🚀 %s\r\n", test.String())
+// 		} else if test.Time <= tresholdNormal {
+// 			fmt.Printf("    🕐 %s\r\n", test.String())
+// 		} else {
+// 			fmt.Printf("    🐌 %s\r\n", test.String())
+// 		}
+// 	}
+// }
+
+// // Displays the results of the given tests as a tree.
+// func displayTreeTestResults(tests []xunit.Test) {
+// 	for _, test := range tests {
+// 		fmt.Println(test.Name)
+// 		// if test.Time <= tresholdFast {
+// 		// 	fmt.Printf("    🚀 %s\r\n", test.String())
+// 		// } else if test.Time <= tresholdNormal {
+// 		// 	fmt.Printf("    🕐 %s\r\n", test.String())
+// 		// } else {
+// 		// 	fmt.Printf("    🐌 %s\r\n", test.String())
+// 		// }
+// 	}
+// }
 
 // Load the xUnit test result(s) file from filePath and return into a struct representing these result(s).
 func loadXunitTestResults(filePath string) xunit.Result {

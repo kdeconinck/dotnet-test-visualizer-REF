@@ -31,8 +31,6 @@ import (
 	"encoding/xml"
 	"fmt"
 	"strings"
-
-	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/camelcase"
 )
 
 // The .NET test result(s) in xUnit's v2+ XML format.
@@ -138,6 +136,82 @@ type Error struct {
 	Type string `xml:"type,attr"`
 }
 
+type Node struct {
+	Name     string
+	Tests    []Test
+	Children []*Node
+}
+
+// Returns all the tests of an assembly.
+func (assembly *Assembly) getTests() []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		resultSet = append(resultSet, collection.Tests...)
+	}
+
+	return resultSet
+}
+
+// Returns the name (NO extension) of the assembly.
+func (assembly *Assembly) getNameWithoutExtension() string {
+	assemblyName := assembly.Name()
+
+	return strings.TrimRight(assemblyName, ".dl")
+}
+
+func (assembly *Assembly) BuildTree() *Node {
+	root := &Node{Name: ""}
+
+	for _, item := range assembly.getTests() {
+		currentNode := root
+
+		if item.HasDisplayName() {
+			currentNode.Tests = append(currentNode.Tests, item)
+		} else if !item.HasDisplayName() && !item.isNested() {
+			currentNode.Tests = append(currentNode.Tests, item)
+		} else if item.isNested() {
+			parts := make([]string, 0)
+			fullNameParts := strings.Split(item.Name, "+")
+			parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
+			parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")...)
+
+			for idx, part := range parts {
+				var childNode *Node
+
+				for _, child := range currentNode.Children {
+					if child.Name == part {
+						childNode = child
+						break
+					}
+				}
+
+				if childNode == nil {
+					childNode = &Node{Name: part}
+					if idx == len(parts)-1 {
+						childNode.Tests = append(childNode.Tests, item)
+					}
+
+					currentNode.Children = append(currentNode.Children, childNode)
+				}
+
+				currentNode = childNode
+			}
+		}
+	}
+
+	return root
+}
+
+func PrintTree(node *Node, indent string) {
+	fmt.Println(indent + node.Name + " - ")
+	fmt.Println(len(node.Tests))
+
+	for _, child := range node.Children {
+		PrintTree(child, indent+"  ")
+	}
+}
+
 // Name returns the name and the extension of the assembly.
 func (assembly *Assembly) Name() string {
 	if strings.Contains(assembly.FullName, "/") {
@@ -145,6 +219,16 @@ func (assembly *Assembly) Name() string {
 	}
 
 	return assembly.FullName[strings.LastIndex(assembly.FullName, "\\")+1:]
+}
+
+// Returns `true` if `test` has is a "nested" test, `false` otherwise.
+func (test *Test) isNested() bool {
+	return strings.Contains(test.Name, "+")
+}
+
+// HasDisplayName returns `true` if `test` has a display name, `false` otherwise.
+func (test *Test) HasDisplayName() bool {
+	return strings.Contains(test.Name, " ")
 }
 
 // UniqueTraits returns the unique traits over a single assembly.
@@ -167,7 +251,6 @@ func (assembly *Assembly) UniqueTraits() []Trait {
 				}
 			}
 		}
-
 	}
 
 	return resultSet
@@ -275,28 +358,27 @@ func (assembly *Assembly) NestedTestsForTrait(trait Trait) []Test {
 	return resultSet
 }
 
-// String returns the human-readble version of test.
-func (test *Test) String() string {
-	if test.Result == "Pass" {
-		return fmt.Sprintf("\033[1;32m ✓ \033[0m %s (%v seconds)", test.FriendlyName(), test.Time)
-	}
+// // String returns the human-readble version of test.
+// func (test *Test) String() string {
+// 	if test.Result == "Pass" {
+// 		return fmt.Sprintf("\033[1;32m ✓ \033[0m %s (%v seconds)", test.FriendlyName(), test.Time)
+// 	}
 
-	return fmt.Sprintf("\033[1;31m ⛌ \033[0m %s (%v seconds)", test.FriendlyName(), test.Time)
-}
+// 	return fmt.Sprintf("\033[1;31m ⛌ \033[0m %s (%v seconds)", test.FriendlyName(), test.Time)
+// }
 
 // TestName returns the name of the test.
 func (test *Test) TestName() string {
+	if test.HasDisplayName() {
+		return test.Name
+	}
+
 	testPrefix := fmt.Sprintf("%s.", test.Type)
 
 	return strings.TrimPrefix(test.Name, testPrefix)
 }
 
-// FriendlyName returns the human-reable version of the name of the test.
-func (test *Test) FriendlyName() string {
-	return strings.Join(camelcase.Split(test.TestName()), " ")
-}
-
-// Returns `true` if test is a nested one, `false` otherwise.
-func (test *Test) isNested() bool {
-	return strings.Contains(test.Name, "+")
-}
+// // FriendlyName returns the human-reable version of the name of the test.
+// func (test *Test) FriendlyName() string {
+// 	return strings.Join(camelcase.Split(test.TestName()), " ")
+// }
