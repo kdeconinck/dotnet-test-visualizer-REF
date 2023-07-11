@@ -115,7 +115,7 @@ func main() {
 			}
 		}
 
-		// // Print ALL the data that's present in the tree.
+		// Print data about the test(s) that contains nesting.
 		for _, node := range resultTree.Children {
 			fmt.Println("")
 			PrintTree(node, "")
@@ -155,11 +155,11 @@ func PrintTree(node *xunit.Node, indent string) {
 		}
 
 		if test.Time <= tresholdFast {
-			fmt.Printf("    🚀 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+			fmt.Printf("%s      🚀 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		} else if test.Time <= tresholdNormal {
-			fmt.Printf("    🕐 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+			fmt.Printf("%s      🕐 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		} else {
-			fmt.Printf("    🐌 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+			fmt.Printf("%s      🐌 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		}
 	}
 

@@ -174,7 +174,7 @@ func (assembly *Assembly) BuildTree() *Node {
 			parts := make([]string, 0)
 			fullNameParts := strings.Split(item.Name, "+")
 			parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
-			parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")...)
+			parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")[0])
 
 			for idx, part := range parts {
 				var childNode *Node
@@ -373,9 +373,7 @@ func (test *Test) TestName() string {
 		return test.Name
 	}
 
-	testPrefix := fmt.Sprintf("%s.", test.Type)
-
-	return strings.TrimPrefix(test.Name, testPrefix)
+	return test.Name[strings.LastIndex(test.Name, ".")+1:]
 }
 
 // // FriendlyName returns the human-reable version of the name of the test.
