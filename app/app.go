@@ -31,7 +31,9 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 
+	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/camelcase"
 	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/xunit"
 )
 
@@ -107,11 +109,11 @@ func main() {
 			}
 
 			if test.Time <= tresholdFast {
-				fmt.Printf("    🚀 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+				fmt.Printf("    🚀 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
 			} else if test.Time <= tresholdNormal {
-				fmt.Printf("    🕐 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+				fmt.Printf("    🕐 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
 			} else {
-				fmt.Printf("    🐌 %s %s (%v seconds)\r\n", status, test.TestName(), test.Time)
+				fmt.Printf("    🐌 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
 			}
 		}
 
@@ -147,7 +149,7 @@ func main() {
 }
 
 func PrintTree(node *xunit.Node, indent string) {
-	fmt.Printf("%s         %s\r\n", indent, node.Name)
+	fmt.Printf("%s         %s.\r\n", indent, getFriendlyName(node.Name))
 	for _, test := range node.Tests {
 		status := "\033[1;32m✓\033[0m"
 		if test.Result != "Pass" {
@@ -155,11 +157,11 @@ func PrintTree(node *xunit.Node, indent string) {
 		}
 
 		if test.Time <= tresholdFast {
-			fmt.Printf("%s      🚀 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
+			fmt.Printf("%s         🚀 %s %s. (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		} else if test.Time <= tresholdNormal {
-			fmt.Printf("%s      🕐 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
+			fmt.Printf("%s         🕐 %s %s. (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		} else {
-			fmt.Printf("%s      🐌 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
+			fmt.Printf("%s         🐌 %s %s. (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		}
 	}
 
@@ -170,6 +172,10 @@ func PrintTree(node *xunit.Node, indent string) {
 	for _, child := range node.Children {
 		PrintTree(child, indent+"  ")
 	}
+}
+
+func getFriendlyName(inputString string) string {
+	return strings.Join(camelcase.Split(inputString), " ")
 }
 
 // // Displays the results of the given tests.

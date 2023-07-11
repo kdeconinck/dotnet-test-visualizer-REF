@@ -31,6 +31,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"strings"
+
+	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/camelcase"
 )
 
 // The .NET test result(s) in xUnit's v2+ XML format.
@@ -373,10 +375,14 @@ func (test *Test) TestName() string {
 		return test.Name
 	}
 
-	return test.Name[strings.LastIndex(test.Name, ".")+1:]
+	return getFriendlyName(test.Name[strings.LastIndex(test.Name, ".")+1:])
 }
 
-// // FriendlyName returns the human-reable version of the name of the test.
-// func (test *Test) FriendlyName() string {
-// 	return strings.Join(camelcase.Split(test.TestName()), " ")
-// }
+func getFriendlyName(inputString string) string {
+	return strings.Join(camelcase.Split(inputString), " ")
+}
+
+// FriendlyName returns the human-reable version of the name of the test.
+func (test *Test) FriendlyName() string {
+	return strings.Join(camelcase.Split(test.TestName()), " ")
+}
