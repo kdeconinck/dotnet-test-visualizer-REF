@@ -101,29 +101,49 @@ func main() {
 
 		resultTree := assembly.BuildTree()
 
-		// First, we loop over all the test(s) that doesn't contain any nesting.
-		for _, test := range resultTree.Tests {
-			status := "\033[1;32m✓\033[0m"
-			if test.Result != "Pass" {
-				status = "\033[1;31m⛌\033[0m"
-			}
+		// // First, we loop over all the test(s) that doesn't contain any nesting.
+		// for _, test := range resultTree.Tests {
+		// 	status := "\033[1;32m✓\033[0m"
+		// 	if test.Result != "Pass" {
+		// 		status = "\033[1;31m⛌\033[0m"
+		// 	}
 
-			if test.Time <= tresholdFast {
-				fmt.Printf("    🚀 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
-			} else if test.Time <= tresholdNormal {
-				fmt.Printf("    🕐 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
-			} else {
-				fmt.Printf("    🐌 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
-			}
-		}
+		// 	if test.Time <= tresholdFast {
+		// 		fmt.Printf("    🚀 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
+		// 	} else if test.Time <= tresholdNormal {
+		// 		fmt.Printf("    🕐 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
+		// 	} else {
+		// 		fmt.Printf("    🐌 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
+		// 	}
+		// }
 
 		// Print data about the test(s) that contains nesting.
-		for _, node := range resultTree.Children {
-			fmt.Println("")
-			PrintTree(node, "")
-		}
+		for trait, nodes := range resultTree {
+			// Print the trait that's being processed.
+			fmt.Printf("  %s\r\n", trait)
 
-		// 	uniqueTraits := assembly.UniqueTraits()
+			for _, node := range nodes {
+				for _, test := range node.Tests {
+					status := "\033[1;32m✓\033[0m"
+					if test.Result != "Pass" {
+						status = "\033[1;31m⛌\033[0m"
+					}
+
+					if test.Time <= tresholdFast {
+						fmt.Printf("    🚀 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
+					} else if test.Time <= tresholdNormal {
+						fmt.Printf("    🕐 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
+					} else {
+						fmt.Printf("    🐌 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
+					}
+					// }
+					// for _, node := range tree.Children {
+					// 	fmt.Println("")
+					// 	PrintTree(node, "")
+				}
+			}
+
+		}
 
 		// 	// When NO traits have been found, just display the results of all the test(s), otherwise, group them by their
 		// 	// trait first followed by the remaining tests that doesn't have a trait.

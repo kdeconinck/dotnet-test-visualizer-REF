@@ -162,47 +162,54 @@ func (assembly *Assembly) getNameWithoutExtension() string {
 	return strings.TrimRight(assemblyName, ".dl")
 }
 
-func (assembly *Assembly) BuildTree() *Node {
-	root := &Node{Name: ""}
+func (assembly *Assembly) BuildTree() map[string][]*Node {
+	mapSet := make(map[string][]*Node)
 
-	for _, item := range assembly.getTests() {
-		currentNode := root
+	for _, trait := range assembly.UniqueTraits() {
+		root := &Node{Name: ""}
+		resultSet := make([]*Node, 0)
+		for _, item := range assembly.testsForTrait(trait) {
+			currentNode := root
 
-		if item.HasDisplayName() {
-			currentNode.Tests = append(currentNode.Tests, item)
-		} else if !item.HasDisplayName() && !item.isNested() {
-			currentNode.Tests = append(currentNode.Tests, item)
-		} else if item.isNested() {
-			parts := make([]string, 0)
-			fullNameParts := strings.Split(item.Name, "+")
-			parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
-			parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")[0])
+			if item.HasDisplayName() {
+				currentNode.Tests = append(currentNode.Tests, item)
+			} else if !item.HasDisplayName() && !item.isNested() {
+				currentNode.Tests = append(currentNode.Tests, item)
+			} else if item.isNested() {
+				parts := make([]string, 0)
+				fullNameParts := strings.Split(item.Name, "+")
+				parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
+				parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")[0])
 
-			for idx, part := range parts {
-				var childNode *Node
+				for idx, part := range parts {
+					var childNode *Node
 
-				for _, child := range currentNode.Children {
-					if child.Name == part {
-						childNode = child
-						break
-					}
-				}
-
-				if childNode == nil {
-					childNode = &Node{Name: part}
-					if idx == len(parts)-1 {
-						childNode.Tests = append(childNode.Tests, item)
+					for _, child := range currentNode.Children {
+						if child.Name == part {
+							childNode = child
+							break
+						}
 					}
 
-					currentNode.Children = append(currentNode.Children, childNode)
-				}
+					if childNode == nil {
+						childNode = &Node{Name: part}
+						if idx == len(parts)-1 {
+							childNode.Tests = append(childNode.Tests, item)
+						}
 
-				currentNode = childNode
+						currentNode.Children = append(currentNode.Children, childNode)
+					}
+
+					currentNode = childNode
+				}
 			}
 		}
+
+		resultSet = append(resultSet, root)
+		mapSet[trait.Name+" - "+trait.Value] = resultSet
 	}
 
-	return root
+	return mapSet
 }
 
 func PrintTree(node *Node, indent string) {
@@ -231,6 +238,29 @@ func (test *Test) isNested() bool {
 // HasDisplayName returns `true` if `test` has a display name, `false` otherwise.
 func (test *Test) HasDisplayName() bool {
 	return strings.Contains(test.Name, " ")
+}
+
+// UniqueTraits returns the unique traits over a single assembly.
+func UniqueTraits(tests []Test) []Trait {
+	resultSet := make([]Trait, 0)
+
+	for _, test := range tests {
+		for _, trait := range test.TraitSet.Traits {
+			isTraitAlreadyFound := false
+			for _, result := range resultSet {
+				if result.Name == trait.Name && result.Value == trait.Value {
+					isTraitAlreadyFound = true
+					break
+				}
+			}
+
+			if !isTraitAlreadyFound {
+				resultSet = append(resultSet, trait)
+			}
+		}
+	}
+
+	return resultSet
 }
 
 // UniqueTraits returns the unique traits over a single assembly.
@@ -315,6 +345,23 @@ func (assembly *Assembly) NestedTestsWithoutTraits() []Test {
 		for _, test := range collection.Tests {
 			if test.isNested() && len(test.TraitSet.Traits) == 0 {
 				resultSet = append(resultSet, test)
+			}
+		}
+	}
+
+	return resultSet
+}
+
+// Returns all the test(s) that does belong to the given trait.
+func (assembly *Assembly) testsForTrait(trait Trait) []Test {
+	resultSet := make([]Test, 0)
+
+	for _, collection := range assembly.Collections {
+		for _, test := range collection.Tests {
+			for _, testTrait := range test.TraitSet.Traits {
+				if testTrait.Name == trait.Name && testTrait.Value == trait.Value {
+					resultSet = append(resultSet, test)
+				}
 			}
 		}
 	}
