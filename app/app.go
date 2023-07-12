@@ -34,6 +34,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/args"
 	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/camelcase"
 	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/xunit"
 )
@@ -51,109 +52,125 @@ func main() {
 	fmt.Println("   | \\| | __|_   _| |_   _|__ __| |_  \\ \\ / (_)____  _ __ _| (_)______ _ _ ")
 	fmt.Println("  _| .` | _|  | |     | |/ -_|_-<  _|  \\ V /| (_-< || / _` | | |_ / -_) '_|")
 	fmt.Println(" (_)_|\\_|___| |_|     |_|\\___/__/\\__|   \\_/ |_/__/\\_,_\\__,_|_|_/__\\___|_|  ")
-
-	// Load the file that contains the xUnit test result(s).
-	xUnitResults := loadXunitTestResults("results2.xml")
-
 	fmt.Println("")
 
-	// Overal information.
-	fmt.Printf("Amount of assemblies: %v\r\n", len(xUnitResults.Assemblies))
+	// Parse the arguments that are passed to the application.
+	logFiles, err := args.FindNamed("--logFile")
 
-	if xUnitResults.Computer != "" {
-		fmt.Printf("Computer:             %s\r\n", xUnitResults.Computer)
-	}
-
-	if xUnitResults.User != "" {
-		fmt.Printf("User:                 %s\r\n", xUnitResults.User)
-	}
-
-	if xUnitResults.StartRTF != "" {
-		fmt.Printf("Start time:           %s\r\n", xUnitResults.StartRTF)
-	}
-
-	if xUnitResults.FinishRTF != "" {
-		fmt.Printf("End time:             %s\r\n", xUnitResults.FinishRTF)
-	} else if xUnitResults.Timestamp != "" {
-		fmt.Printf("End time:             %s\r\n", xUnitResults.Timestamp)
-	}
-
-	// Loop over the assemblies and print the results accordingly.
-	for _, assembly := range xUnitResults.Assemblies {
+	// If there aren't any LOG files found to process, terminate the application with a failure message.
+	if err != nil {
+		fmt.Println("\033[1;31mFailed\033[0m: No LOG files found to process.")
+		fmt.Println("        Use the `--logFile` argument to pass a file contaning logs in xUnit's v2+ XML format.")
+		fmt.Println("        If you want to specify multiple files, pass the argument once for each log file.")
 		fmt.Println("")
-		fmt.Printf("Assembly:         %s", assembly.Name())
 
-		if assembly.FailedCount != 0 {
-			fmt.Printf(" - \033[1;31m⛌ Failed (%v of %v failed).\033[0m\r\n", assembly.FailedCount, assembly.Total)
-		} else {
-			fmt.Printf(" - \033[1;32m✓ Passed (%v of %v passed).\033[0m \r\n", assembly.PassedCount, assembly.Total)
+		os.Exit(0)
+	}
+
+	// Loop over all the LOG files containing results and parse them.
+	for _, logFile := range logFiles {
+		resultSet := loadXunitTestResults(logFile)
+
+		fmt.Printf("Input source:         %s\r\n", logFile)
+
+		// Overal information.
+		fmt.Printf("Amount of assemblies: %v\r\n", len(resultSet.Assemblies))
+
+		if resultSet.Computer != "" {
+			fmt.Printf("Computer:             %s\r\n", resultSet.Computer)
 		}
 
-		fmt.Printf("Date / time:      %s %s\r\n", assembly.RunDate, assembly.RunTime)
-		fmt.Printf("Total time:       %v seconds.\r\n", assembly.Time)
-
-		// Print information about the assembly.
-		fmt.Println("")
-		fmt.Printf("  # tests:        %v\r\n", assembly.Total)
-		fmt.Printf("  # Passed tests: %v\r\n", assembly.PassedCount)
-		fmt.Printf("  # Failed tests: %v\r\n", assembly.FailedCount)
-		fmt.Printf("  # Errors:       %v\r\n", assembly.ErrorCount)
-		fmt.Println("")
-
-		// Build the tree which contains all the test(s).
-		resultTree := assembly.BuildTree()
-
-		// Sort the tree because Go doesn't guarantee the order of the elements in a map when iterating.
-		keys := make([]string, 0)
-		for k := range resultTree {
-			keys = append(keys, k)
+		if resultSet.User != "" {
+			fmt.Printf("User:                 %s\r\n", resultSet.User)
 		}
-		sort.Strings(keys)
 
-		// Loop over all elements in the map (in order).
-		for _, key := range keys {
-			for _, node := range resultTree[key] {
-				if key != "" {
-					fmt.Println("")
-					fmt.Printf("  Trait: %s\r\n", key)
-				}
+		if resultSet.StartRTF != "" {
+			fmt.Printf("Start time:           %s\r\n", resultSet.StartRTF)
+		}
 
-				// for _, node := range nodes {
-				for _, test := range node.Tests {
-					status := "\033[1;32m✓\033[0m"
-					if test.Result != "Pass" {
-						status = "\033[1;31m⛌\033[0m"
-					}
+		if resultSet.FinishRTF != "" {
+			fmt.Printf("End time:             %s\r\n", resultSet.FinishRTF)
+		} else if resultSet.Timestamp != "" {
+			fmt.Printf("End time:             %s\r\n", resultSet.Timestamp)
+		}
 
-					suffix := ""
+		// Loop over the assemblies and print the results accordingly.
+		for _, assembly := range resultSet.Assemblies {
+			fmt.Println("")
+			fmt.Printf("  Assembly:         %s", assembly.Name())
 
+			if assembly.FailedCount != 0 {
+				fmt.Printf(" - \033[1;31m⛌ Failed (%v of %v failed).\033[0m\r\n", assembly.FailedCount, assembly.Total)
+			} else {
+				fmt.Printf(" - \033[1;32m✓ Passed (%v of %v passed).\033[0m \r\n", assembly.PassedCount, assembly.Total)
+			}
+
+			fmt.Printf("  Date / time:      %s %s\r\n", assembly.RunDate, assembly.RunTime)
+			fmt.Printf("  Total time:       %v seconds.\r\n", assembly.Time)
+
+			// Print information about the assembly.
+			fmt.Println("")
+			fmt.Printf("    # tests:        %v\r\n", assembly.Total)
+			fmt.Printf("    # Passed tests: %v\r\n", assembly.PassedCount)
+			fmt.Printf("    # Failed tests: %v\r\n", assembly.FailedCount)
+			fmt.Printf("    # Errors:       %v\r\n", assembly.ErrorCount)
+			fmt.Println("")
+
+			// Build the tree which contains all the test(s).
+			resultTree := assembly.BuildTree()
+
+			// Sort the tree because Go doesn't guarantee the order of the elements in a map when iterating.
+			keys := make([]string, 0)
+			for k := range resultTree {
+				keys = append(keys, k)
+			}
+			sort.Strings(keys)
+
+			// Loop over all elements in the map (in order).
+			for _, key := range keys {
+				for _, node := range resultTree[key] {
 					if key != "" {
-						suffix = "  "
+						fmt.Println("")
+						fmt.Printf("    Trait: %s\r\n", key)
 					}
 
-					if test.Time <= tresholdFast {
-						fmt.Printf("%s  🚀 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
-					} else if test.Time <= tresholdNormal {
-						fmt.Printf("%s  🕐 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
-					} else {
-						fmt.Printf("%s  🐌 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
-					}
-				}
+					// for _, node := range nodes {
+					for _, test := range node.Tests {
+						status := "\033[1;32m✓\033[0m"
+						if test.Result != "Pass" {
+							status = "\033[1;31m⛌\033[0m"
+						}
 
-				// Travel over all the nested test(s).
-				for _, node := range node.Children {
-					fmt.Println("")
-					if key != "" {
-						PrintTree(node, "  ")
-					} else {
-						PrintTree(node, "")
+						suffix := "  "
+
+						if key != "" {
+							suffix = "    "
+						}
+
+						if test.Time <= tresholdFast {
+							fmt.Printf("%s  🚀 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
+						} else if test.Time <= tresholdNormal {
+							fmt.Printf("%s  🕐 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
+						} else {
+							fmt.Printf("%s  🐌 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
+						}
+					}
+
+					// Travel over all the nested test(s).
+					for _, node := range node.Children {
+						fmt.Println("")
+						if key != "" {
+							PrintTree(node, "    ")
+						} else {
+							PrintTree(node, "  ")
+						}
 					}
 				}
 			}
 		}
-	}
 
-	fmt.Println("")
+		fmt.Println("")
+	}
 }
 
 func PrintTree(node *xunit.Node, indent string) {
