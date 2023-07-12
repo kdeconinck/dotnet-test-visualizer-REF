@@ -53,7 +53,7 @@ func main() {
 	fmt.Println(" (_)_|\\_|___| |_|     |_|\\___/__/\\__|   \\_/ |_/__/\\_,_\\__,_|_|_/__\\___|_|  ")
 
 	// Load the file that contains the xUnit test result(s).
-	xUnitResults := loadXunitTestResults("results.xml")
+	xUnitResults := loadXunitTestResults("results2.xml")
 
 	fmt.Println("")
 
