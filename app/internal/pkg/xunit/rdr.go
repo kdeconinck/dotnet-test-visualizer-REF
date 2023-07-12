@@ -281,7 +281,7 @@ func (test *Test) isNested() bool {
 
 // HasDisplayName returns `true` if `test` has a display name, `false` otherwise.
 func (test *Test) HasDisplayName() bool {
-	return strings.Contains(test.Name, " ")
+	return strings.Contains(test.Name, " ") && !strings.Contains(test.Name, "+")
 }
 
 // UniqueTraits returns the unique traits over a single assembly.

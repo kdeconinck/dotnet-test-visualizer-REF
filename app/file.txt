@@ -15,24 +15,6 @@ Total time:       21.328 seconds.
   # Failed tests: 0
   # Errors:       0
 
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0100304 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.002421 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0020787 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+RotateClientSecret+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0042623 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+RotateClientSecret+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0021813 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+RotateClientSecret+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0021135 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0042584 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0020422 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.011178 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0042449 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0019027 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0020769 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0044011 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0091232 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0028408 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+DeleteIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0043811 seconds)
-  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+DeleteIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0020009 seconds)
-  🕐 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+DeleteIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0545684 seconds)
 
   Environment Handler Tests.
     When Environment Is Not Found.
@@ -150,6 +132,9 @@ Total time:       21.328 seconds.
     When The User Has No Permissions.
        🚀 [1;32m✓[0m Returns Forbid. (0.0179255 seconds)
 
+    When Client Id Is Not Valid.
+       🚀 [1;32m✓[0m ReturnsBadRequest(clientId: null). (0.0100304 seconds)
+
     When The Integration Is Not Found.
        🚀 [1;32m✓[0m Returns Not Found. (0.0255503 seconds)
 
@@ -167,6 +152,9 @@ Total time:       21.328 seconds.
 
     When The Update Is Successful.
        🐌 [1;32m✓[0m Result Should Be Ok With The Correct Data. (0.2826222 seconds)
+
+    When The Client Id Is Not Valid.
+       🚀 [1;32m✓[0m ReturnsBadRequest(clientId: null). (0.0042623 seconds)
 
     When The Store Was Unable To Delete The Application.
        🕐 [1;32m✓[0m Returns Problem. (0.0586276 seconds)
@@ -848,345 +836,347 @@ Total time:       21.328 seconds.
     If Environment Roles Have Duplicated Roles.
        🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012331 seconds)
 
+
   Trait: Feature - User Management API
 
-  User Management Handler Tests.
-    When Mapping Of Subscriptions With Environments Returned Error Result.
-       🚀 [1;32m✓[0m The Result Should Equals Unauthorized. (0.0043105 seconds)
+    User Management Handler Tests.
+      When Mapping Of Subscriptions With Environments Returned Error Result.
+         🚀 [1;32m✓[0m The Result Should Equals Unauthorized. (0.0043105 seconds)
 
-    If No User Id Is Provided.
-       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0012459 seconds)
+      If No User Id Is Provided.
+         🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0012459 seconds)
 
-    When Subscription Does Not Exist Or Not Accessible.
-       🚀 [1;32m✓[0m Returns Http Not Found. (0.0170668 seconds)
+      When Subscription Does Not Exist Or Not Accessible.
+         🚀 [1;32m✓[0m Returns Http Not Found. (0.0170668 seconds)
 
-    When Correct Parameters.
-       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0182336 seconds)
+      When Correct Parameters.
+         🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0182336 seconds)
 
-    When The Model Is Valid.
-       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0331981 seconds)
+      When The Model Is Valid.
+         🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0331981 seconds)
 
-    When No Permissions.
-       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0020637 seconds)
+      When No Permissions.
+         🚀 [1;32m✓[0m Returns Http Forbidden. (0.0020637 seconds)
 
-    When Role Deleted With Service Error Or Success Or Entity Not Found Or Operation Is Not Valid Result.
-       🚀 [1;32m✓[0m Returns Http Result. (0.0083886 seconds)
+      When Role Deleted With Service Error Or Success Or Entity Not Found Or Operation Is Not Valid Result.
+         🚀 [1;32m✓[0m Returns Http Result. (0.0083886 seconds)
 
-    When Incorrect Parameters.
-       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0019678 seconds)
-
-
-  User Invitations Manager Tests.
-    When Called User Management Service Invite Users Async.
-       🚀 [1;32m✓[0m The User Management Service Is Called With The Correct Arguments. (0.0290475 seconds)
-
-    When The Creation Of The User Fails.
-       🕐 [1;32m✓[0m The Status Should Equals Failure. (0.0782516 seconds)
-
-    When User Invitation Result Model User Is Not Null.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0253293 seconds)
-
-    When Subscription Does Not Exist.
-       🚀 [1;32m✓[0m The Result Should Be False. (0.0018891 seconds)
-
-    When User Invitation Result Model User Is Null.
-       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0062982 seconds)
-
-    When Subscription Does Exist.
-       🚀 [1;32m✓[0m The Result Should Be True. (0.00124 seconds)
-
-    When The Existing User Model Is Null.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0327383 seconds)
-
-    When The Creation Of The User Succeeds.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0071833 seconds)
-
-    When Environments Are Duplicated.
-       🕐 [1;32m✓[0m The User Management Service Is Called Without Duplicated Environments. (0.0634743 seconds)
-
-    When User Is Chili Admin.
-       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0162853 seconds)
-
-    When The User Customer Guid Is Not The Same.
-       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0118485 seconds)
-
-    When Environment Role Identifier Is Not Valid.
-       🚀 [1;32m✓[0m Throw Not Supported Exception. (0.0043631 seconds)
-
-    When The Existing User Model Is Not Null.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0489159 seconds)
-
-    When Sending Password Reset Email Failed.
-       🚀 [1;32m✓[0m The Status Should Equals Sending Password Reset Email Failure. (0.0059228 seconds)
-
-    When Customer Guid Is Null.
-       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0055816 seconds)
-
-    When One User Is Successfully Created And One Not.
-       🚀 [1;32m✓[0m The Statuses Should Equals Success And Failure. (0.0281261 seconds)
-
-    When Environemnt Role Is Forbidden In Subscription.
-       🚀 [1;32m✓[0m Operation Is Not Valid Result. (0.0064883 seconds)
-
-    When Provided Environments Are Not Belong To Any Subscription.
-       🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0110981 seconds)
-
-    When Emails Are Duplicated.
-       🚀 [1;32m✓[0m The Result Should Contain Unique Email. (0.013415 seconds)
-
-    When User Is EA Or SA.
-       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0123255 seconds)
+      When Incorrect Parameters.
+         🚀 [1;32m✓[0m Returns Http Bad Request. (0.0019678 seconds)
 
 
-  User Accessible Subscriptions Model Validator Tests.
-    If Email Is Invalid.
-       🐌 [1;32m✓[0m Should Return Invalid Result. (0.112315 seconds)
+    User Invitations Manager Tests.
+      When Called User Management Service Invite Users Async.
+         🚀 [1;32m✓[0m The User Management Service Is Called With The Correct Arguments. (0.0290475 seconds)
 
-    If Email Is Valid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013865 seconds)
+      When The Creation Of The User Fails.
+         🕐 [1;32m✓[0m The Status Should Equals Failure. (0.0782516 seconds)
 
-    If Email Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012818 seconds)
+      When User Invitation Result Model User Is Not Null.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0253293 seconds)
 
-    If Email Is White Space.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013728 seconds)
+      When Subscription Does Not Exist.
+         🚀 [1;32m✓[0m The Result Should Be False. (0.0018891 seconds)
 
-    If Email Is Empty.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012995 seconds)
+      When User Invitation Result Model User Is Null.
+         🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0062982 seconds)
 
+      When Subscription Does Exist.
+         🚀 [1;32m✓[0m The Result Should Be True. (0.00124 seconds)
 
-  Mark User Migrated Model Validator Tests.
-    If Email Is Empty.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0237639 seconds)
+      When The Existing User Model Is Null.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0327383 seconds)
 
-    If Email Is White Space.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012639 seconds)
+      When The Creation Of The User Succeeds.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0071833 seconds)
 
-    If Email Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013525 seconds)
+      When Environments Are Duplicated.
+         🕐 [1;32m✓[0m The User Management Service Is Called Without Duplicated Environments. (0.0634743 seconds)
 
-    If Email Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013599 seconds)
+      When User Is Chili Admin.
+         🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0162853 seconds)
 
-    If Email Is Valid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012698 seconds)
+      When The User Customer Guid Is Not The Same.
+         🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0118485 seconds)
 
+      When Environment Role Identifier Is Not Valid.
+         🚀 [1;32m✓[0m Throw Not Supported Exception. (0.0043631 seconds)
 
-  Add User Model Validator Tests.
-    If Email Is White Space.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0048747 seconds)
+      When The Existing User Model Is Not Null.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0489159 seconds)
 
-    If Email Is Empty.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012658 seconds)
+      When Sending Password Reset Email Failed.
+         🚀 [1;32m✓[0m The Status Should Equals Sending Password Reset Email Failure. (0.0059228 seconds)
 
-    If Email Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001332 seconds)
+      When Customer Guid Is Null.
+         🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0055816 seconds)
 
-    If Last Name Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012324 seconds)
+      When One User Is Successfully Created And One Not.
+         🚀 [1;32m✓[0m The Statuses Should Equals Success And Failure. (0.0281261 seconds)
 
-    If First Name Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001211 seconds)
+      When Environemnt Role Is Forbidden In Subscription.
+         🚀 [1;32m✓[0m Operation Is Not Valid Result. (0.0064883 seconds)
 
-    If All Is Valid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012103 seconds)
+      When Provided Environments Are Not Belong To Any Subscription.
+         🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0110981 seconds)
 
-    If Email Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012125 seconds)
+      When Emails Are Duplicated.
+         🚀 [1;32m✓[0m The Result Should Contain Unique Email. (0.013415 seconds)
 
-
-  Invite Users Model Validator Tests.
-    If Data Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0018349 seconds)
-
-    If Data Is Valid.
-       🚀 [1;32m✓[0m Should Return Valid Result. (0.0019878 seconds)
+      When User Is EA Or SA.
+         🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0123255 seconds)
 
 
-  User Update Model Validator Tests.
-    If Data Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0020376 seconds)
+    User Accessible Subscriptions Model Validator Tests.
+      If Email Is Invalid.
+         🐌 [1;32m✓[0m Should Return Invalid Result. (0.112315 seconds)
 
-    If Data Is Valid.
-       🚀 [1;32m✓[0m Should Return Valid Result. (0.001212 seconds)
+      If Email Is Valid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013865 seconds)
+
+      If Email Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012818 seconds)
+
+      If Email Is White Space.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013728 seconds)
+
+      If Email Is Empty.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012995 seconds)
+
+
+    Mark User Migrated Model Validator Tests.
+      If Email Is Empty.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0237639 seconds)
+
+      If Email Is White Space.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012639 seconds)
+
+      If Email Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013525 seconds)
+
+      If Email Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013599 seconds)
+
+      If Email Is Valid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012698 seconds)
+
+
+    Add User Model Validator Tests.
+      If Email Is White Space.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0048747 seconds)
+
+      If Email Is Empty.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012658 seconds)
+
+      If Email Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.001332 seconds)
+
+      If Last Name Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012324 seconds)
+
+      If First Name Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.001211 seconds)
+
+      If All Is Valid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012103 seconds)
+
+      If Email Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012125 seconds)
+
+
+    Invite Users Model Validator Tests.
+      If Data Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0018349 seconds)
+
+      If Data Is Valid.
+         🚀 [1;32m✓[0m Should Return Valid Result. (0.0019878 seconds)
+
+
+    User Update Model Validator Tests.
+      If Data Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0020376 seconds)
+
+      If Data Is Valid.
+         🚀 [1;32m✓[0m Should Return Valid Result. (0.001212 seconds)
+
 
   Trait: Type - Unit Test
 
-  User Management Handler Tests.
-    When Mapping Of Subscriptions With Environments Returned Error Result.
-       🚀 [1;32m✓[0m The Result Should Equals Unauthorized. (0.0043105 seconds)
+    User Management Handler Tests.
+      When Mapping Of Subscriptions With Environments Returned Error Result.
+         🚀 [1;32m✓[0m The Result Should Equals Unauthorized. (0.0043105 seconds)
 
-    If No User Id Is Provided.
-       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0012459 seconds)
+      If No User Id Is Provided.
+         🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0012459 seconds)
 
-    When Subscription Does Not Exist Or Not Accessible.
-       🚀 [1;32m✓[0m Returns Http Not Found. (0.0170668 seconds)
+      When Subscription Does Not Exist Or Not Accessible.
+         🚀 [1;32m✓[0m Returns Http Not Found. (0.0170668 seconds)
 
-    When Correct Parameters.
-       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0182336 seconds)
+      When Correct Parameters.
+         🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0182336 seconds)
 
-    When The Model Is Valid.
-       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0331981 seconds)
+      When The Model Is Valid.
+         🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0331981 seconds)
 
-    When No Permissions.
-       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0020637 seconds)
+      When No Permissions.
+         🚀 [1;32m✓[0m Returns Http Forbidden. (0.0020637 seconds)
 
-    When Role Deleted With Service Error Or Success Or Entity Not Found Or Operation Is Not Valid Result.
-       🚀 [1;32m✓[0m Returns Http Result. (0.0083886 seconds)
+      When Role Deleted With Service Error Or Success Or Entity Not Found Or Operation Is Not Valid Result.
+         🚀 [1;32m✓[0m Returns Http Result. (0.0083886 seconds)
 
-    When Incorrect Parameters.
-       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0019678 seconds)
-
-
-  User Invitations Manager Tests.
-    When Called User Management Service Invite Users Async.
-       🚀 [1;32m✓[0m The User Management Service Is Called With The Correct Arguments. (0.0290475 seconds)
-
-    When The Creation Of The User Fails.
-       🕐 [1;32m✓[0m The Status Should Equals Failure. (0.0782516 seconds)
-
-    When User Invitation Result Model User Is Not Null.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0253293 seconds)
-
-    When Subscription Does Not Exist.
-       🚀 [1;32m✓[0m The Result Should Be False. (0.0018891 seconds)
-
-    When User Invitation Result Model User Is Null.
-       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0062982 seconds)
-
-    When Subscription Does Exist.
-       🚀 [1;32m✓[0m The Result Should Be True. (0.00124 seconds)
-
-    When The Existing User Model Is Null.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0327383 seconds)
-
-    When The Creation Of The User Succeeds.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0071833 seconds)
-
-    When Environments Are Duplicated.
-       🕐 [1;32m✓[0m The User Management Service Is Called Without Duplicated Environments. (0.0634743 seconds)
-
-    When User Is Chili Admin.
-       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0162853 seconds)
-
-    When The User Customer Guid Is Not The Same.
-       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0118485 seconds)
-
-    When Environment Role Identifier Is Not Valid.
-       🚀 [1;32m✓[0m Throw Not Supported Exception. (0.0043631 seconds)
-
-    When The Existing User Model Is Not Null.
-       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0489159 seconds)
-
-    When Sending Password Reset Email Failed.
-       🚀 [1;32m✓[0m The Status Should Equals Sending Password Reset Email Failure. (0.0059228 seconds)
-
-    When Customer Guid Is Null.
-       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0055816 seconds)
-
-    When One User Is Successfully Created And One Not.
-       🚀 [1;32m✓[0m The Statuses Should Equals Success And Failure. (0.0281261 seconds)
-
-    When Environemnt Role Is Forbidden In Subscription.
-       🚀 [1;32m✓[0m Operation Is Not Valid Result. (0.0064883 seconds)
-
-    When Provided Environments Are Not Belong To Any Subscription.
-       🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0110981 seconds)
-
-    When Emails Are Duplicated.
-       🚀 [1;32m✓[0m The Result Should Contain Unique Email. (0.013415 seconds)
-
-    When User Is EA Or SA.
-       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0123255 seconds)
+      When Incorrect Parameters.
+         🚀 [1;32m✓[0m Returns Http Bad Request. (0.0019678 seconds)
 
 
-  User Accessible Subscriptions Model Validator Tests.
-    If Email Is Invalid.
-       🐌 [1;32m✓[0m Should Return Invalid Result. (0.112315 seconds)
+    User Invitations Manager Tests.
+      When Called User Management Service Invite Users Async.
+         🚀 [1;32m✓[0m The User Management Service Is Called With The Correct Arguments. (0.0290475 seconds)
 
-    If Email Is Valid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013865 seconds)
+      When The Creation Of The User Fails.
+         🕐 [1;32m✓[0m The Status Should Equals Failure. (0.0782516 seconds)
 
-    If Email Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012818 seconds)
+      When User Invitation Result Model User Is Not Null.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0253293 seconds)
 
-    If Email Is White Space.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013728 seconds)
+      When Subscription Does Not Exist.
+         🚀 [1;32m✓[0m The Result Should Be False. (0.0018891 seconds)
 
-    If Email Is Empty.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012995 seconds)
+      When User Invitation Result Model User Is Null.
+         🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0062982 seconds)
 
+      When Subscription Does Exist.
+         🚀 [1;32m✓[0m The Result Should Be True. (0.00124 seconds)
 
-  Mark User Migrated Model Validator Tests.
-    If Email Is Empty.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0237639 seconds)
+      When The Existing User Model Is Null.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0327383 seconds)
 
-    If Email Is White Space.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012639 seconds)
+      When The Creation Of The User Succeeds.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0071833 seconds)
 
-    If Email Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013525 seconds)
+      When Environments Are Duplicated.
+         🕐 [1;32m✓[0m The User Management Service Is Called Without Duplicated Environments. (0.0634743 seconds)
 
-    If Email Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013599 seconds)
+      When User Is Chili Admin.
+         🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0162853 seconds)
 
-    If Email Is Valid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012698 seconds)
+      When The User Customer Guid Is Not The Same.
+         🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0118485 seconds)
 
+      When Environment Role Identifier Is Not Valid.
+         🚀 [1;32m✓[0m Throw Not Supported Exception. (0.0043631 seconds)
 
-  Add User Model Validator Tests.
-    If Email Is White Space.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0048747 seconds)
+      When The Existing User Model Is Not Null.
+         🚀 [1;32m✓[0m The Status Should Equals Success. (0.0489159 seconds)
 
-    If Email Is Empty.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012658 seconds)
+      When Sending Password Reset Email Failed.
+         🚀 [1;32m✓[0m The Status Should Equals Sending Password Reset Email Failure. (0.0059228 seconds)
 
-    If Email Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001332 seconds)
+      When Customer Guid Is Null.
+         🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0055816 seconds)
 
-    If Last Name Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012324 seconds)
+      When One User Is Successfully Created And One Not.
+         🚀 [1;32m✓[0m The Statuses Should Equals Success And Failure. (0.0281261 seconds)
 
-    If First Name Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001211 seconds)
+      When Environemnt Role Is Forbidden In Subscription.
+         🚀 [1;32m✓[0m Operation Is Not Valid Result. (0.0064883 seconds)
 
-    If All Is Valid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012103 seconds)
+      When Provided Environments Are Not Belong To Any Subscription.
+         🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0110981 seconds)
 
-    If Email Is Null.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012125 seconds)
+      When Emails Are Duplicated.
+         🚀 [1;32m✓[0m The Result Should Contain Unique Email. (0.013415 seconds)
 
-
-  Invite Users Model Validator Tests.
-    If Data Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0018349 seconds)
-
-    If Data Is Valid.
-       🚀 [1;32m✓[0m Should Return Valid Result. (0.0019878 seconds)
+      When User Is EA Or SA.
+         🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0123255 seconds)
 
 
-  User Update Model Validator Tests.
-    If Data Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0020376 seconds)
+    User Accessible Subscriptions Model Validator Tests.
+      If Email Is Invalid.
+         🐌 [1;32m✓[0m Should Return Invalid Result. (0.112315 seconds)
 
-    If Data Is Valid.
-       🚀 [1;32m✓[0m Should Return Valid Result. (0.001212 seconds)
+      If Email Is Valid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013865 seconds)
+
+      If Email Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012818 seconds)
+
+      If Email Is White Space.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013728 seconds)
+
+      If Email Is Empty.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012995 seconds)
 
 
-  Date Range String Validator Tests.
-    If Both Dates Are Valid.
-       🚀 [1;32m✓[0m Should Return Valid Result. (0.0468458 seconds)
+    Mark User Migrated Model Validator Tests.
+      If Email Is Empty.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0237639 seconds)
 
-    If Any Date Is Invalid.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0029178 seconds)
+      If Email Is White Space.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012639 seconds)
 
-    If Start Date Is Higher Than End Date.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0017474 seconds)
+      If Email Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013525 seconds)
 
-    If Start Date Is In The Future.
-       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0016046 seconds)
+      If Email Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013599 seconds)
 
-    If Both Dates Are Null.
-       🚀 [1;32m✓[0m Should Return Valid Result. (0.0012099 seconds)
+      If Email Is Valid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012698 seconds)
+
+
+    Add User Model Validator Tests.
+      If Email Is White Space.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0048747 seconds)
+
+      If Email Is Empty.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012658 seconds)
+
+      If Email Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.001332 seconds)
+
+      If Last Name Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012324 seconds)
+
+      If First Name Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.001211 seconds)
+
+      If All Is Valid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012103 seconds)
+
+      If Email Is Null.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012125 seconds)
+
+
+    Invite Users Model Validator Tests.
+      If Data Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0018349 seconds)
+
+      If Data Is Valid.
+         🚀 [1;32m✓[0m Should Return Valid Result. (0.0019878 seconds)
+
+
+    User Update Model Validator Tests.
+      If Data Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0020376 seconds)
+
+      If Data Is Valid.
+         🚀 [1;32m✓[0m Should Return Valid Result. (0.001212 seconds)
+
+
+    Date Range String Validator Tests.
+      If Both Dates Are Valid.
+         🚀 [1;32m✓[0m Should Return Valid Result. (0.0468458 seconds)
+
+      If Any Date Is Invalid.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0029178 seconds)
+
+      If Start Date Is Higher Than End Date.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0017474 seconds)
+
+      If Start Date Is In The Future.
+         🚀 [1;32m✓[0m Should Return Invalid Result. (0.0016046 seconds)
+
+      If Both Dates Are Null.
+         🚀 [1;32m✓[0m Should Return Valid Result. (0.0012099 seconds)
 
 

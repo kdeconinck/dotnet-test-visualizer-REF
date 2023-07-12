@@ -130,6 +130,7 @@ func main() {
 		for _, key := range keys {
 			for _, node := range resultTree[key] {
 				if key != "" {
+					fmt.Println("")
 					fmt.Printf("  Trait: %s\r\n", key)
 				}
 
@@ -155,21 +156,30 @@ func main() {
 					}
 				}
 
-				// // Travel over all the nested test(s).
-				// for _, node := range node.Children {
-				// 	fmt.Println("")
-				// 	PrintTree(node, "")
-				// }
+				// Travel over all the nested test(s).
+				for _, node := range node.Children {
+					fmt.Println("")
+					if key != "" {
+						PrintTree(node, "  ")
+					} else {
+						PrintTree(node, "")
+					}
+				}
 			}
 		}
 	}
 
 	fmt.Println("")
+
+	fmt.Printf("Amount of test(s): %v\r\n", testCount)
 }
+
+var testCount int
 
 func PrintTree(node *xunit.Node, indent string) {
 	fmt.Printf("%s  %s.\r\n", indent, getFriendlyName(node.Name))
 	for _, test := range node.Tests {
+		testCount += 1
 		status := "\033[1;32m✓\033[0m"
 		if test.Result != "Pass" {
 			status = "\033[1;31m⛌\033[0m"
