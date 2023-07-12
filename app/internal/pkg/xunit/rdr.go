@@ -495,7 +495,17 @@ func (test *Test) TestName() string {
 }
 
 func getFriendlyName(inputString string) string {
-	return strings.Join(camelcase.Split(inputString), " ")
+	words := camelcase.Split(inputString)
+	finalWords := make([]string, 0)
+
+	for idx, word := range words {
+		if idx == 0 {
+			finalWords = append(finalWords, word)
+		} else {
+			finalWords = append(finalWords, strings.ToLower(word))
+		}
+	}
+	return strings.Join(finalWords, " ")
 }
 
 // FriendlyName returns the human-reable version of the name of the test.

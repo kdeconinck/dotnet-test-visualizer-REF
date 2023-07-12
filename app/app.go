@@ -38,22 +38,6 @@ import (
 	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/xunit"
 )
 
-// // First, we loop over all the test(s) that doesn't contain any nesting.
-// for _, test := range resultTree.Tests {
-// 	status := "\033[1;32m✓\033[0m"
-// 	if test.Result != "Pass" {
-// 		status = "\033[1;31m⛌\033[0m"
-// 	}
-
-// 	if test.Time <= tresholdFast {
-// 		fmt.Printf("    🚀 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
-// 	} else if test.Time <= tresholdNormal {
-// 		fmt.Printf("    🕐 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
-// 	} else {
-// 		fmt.Printf("    🐌 %s %s. (%v seconds)\r\n", status, test.TestName(), test.Time)
-// 	}
-// }
-
 // These are constants that should be passed using a configuration file but they are hard-coded right now.
 const (
 	tresholdFast   float32 = 0.05
@@ -69,7 +53,7 @@ func main() {
 	fmt.Println(" (_)_|\\_|___| |_|     |_|\\___/__/\\__|   \\_/ |_/__/\\_,_\\__,_|_|_/__\\___|_|  ")
 
 	// Load the file that contains the xUnit test result(s).
-	xUnitResults := loadXunitTestResults("results2.xml")
+	xUnitResults := loadXunitTestResults("results.xml")
 
 	fmt.Println("")
 
@@ -199,35 +183,18 @@ func PrintTree(node *xunit.Node, indent string) {
 }
 
 func getFriendlyName(inputString string) string {
-	return strings.Join(camelcase.Split(inputString), " ")
+	words := camelcase.Split(inputString)
+	finalWords := make([]string, 0)
+
+	for idx, word := range words {
+		if idx == 0 {
+			finalWords = append(finalWords, word)
+		} else {
+			finalWords = append(finalWords, strings.ToLower(word))
+		}
+	}
+	return strings.Join(finalWords, " ")
 }
-
-// // Displays the results of the given tests.
-// func displayTestResults(tests []xunit.Test) {
-// 	for _, test := range tests {
-// 		if test.Time <= tresholdFast {
-// 			fmt.Printf("    🚀 %s\r\n", test.String())
-// 		} else if test.Time <= tresholdNormal {
-// 			fmt.Printf("    🕐 %s\r\n", test.String())
-// 		} else {
-// 			fmt.Printf("    🐌 %s\r\n", test.String())
-// 		}
-// 	}
-// }
-
-// // Displays the results of the given tests as a tree.
-// func displayTreeTestResults(tests []xunit.Test) {
-// 	for _, test := range tests {
-// 		fmt.Println(test.Name)
-// 		// if test.Time <= tresholdFast {
-// 		// 	fmt.Printf("    🚀 %s\r\n", test.String())
-// 		// } else if test.Time <= tresholdNormal {
-// 		// 	fmt.Printf("    🕐 %s\r\n", test.String())
-// 		// } else {
-// 		// 	fmt.Printf("    🐌 %s\r\n", test.String())
-// 		// }
-// 	}
-// }
 
 // Load the xUnit test result(s) file from filePath and return into a struct representing these result(s).
 func loadXunitTestResults(filePath string) xunit.Result {
