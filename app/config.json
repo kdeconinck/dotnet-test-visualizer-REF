@@ -1,0 +1,5 @@
+{
+	"tresholdFast": 0.05,
+	"tresholdNormal": 0.1,
+	"commonWordsDictionary": []
+}

@@ -27,9 +27,11 @@
 package main
 
 import (
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"sort"
 	"strings"
@@ -39,11 +41,18 @@ import (
 	"github.com/kdeconinck/dotnet-test-visualizer/internal/pkg/xunit"
 )
 
-// These are constants that should be passed using a configuration file but they are hard-coded right now.
-const (
-	tresholdFast   float32 = 0.05
-	tresholdNormal float32 = 0.1
-)
+// The configuration for the application.
+type configuration struct {
+	TresholdFast   float32 `json:"tresholdFast"`
+	TresholdNormal float32 `json:"tresholdNormal"`
+}
+
+// The default configuration for the application.
+// To use your own configuration, use the `--configFile` argument.
+var config configuration = configuration{
+	TresholdFast:   0.05,
+	TresholdNormal: 0.1,
+}
 
 // The `main` entry point for the application.
 func main() {
@@ -53,6 +62,13 @@ func main() {
 	fmt.Println("  _| .` | _|  | |     | |/ -_|_-<  _|  \\ V /| (_-< || / _` | | |_ / -_) '_|")
 	fmt.Println(" (_)_|\\_|___| |_|     |_|\\___/__/\\__|   \\_/ |_/__/\\_,_\\__,_|_|_/__\\___|_|  ")
 	fmt.Println("")
+
+	configFile, err := args.FindNamedSingle("--configFile")
+
+	if err == nil {
+		file, _ := ioutil.ReadFile(configFile)
+		err = json.Unmarshal(file, &config)
+	}
 
 	// Parse the arguments that are passed to the application.
 	logFiles, err := args.FindNamed("--logFile")
@@ -147,9 +163,9 @@ func main() {
 							suffix = "    "
 						}
 
-						if test.Time <= tresholdFast {
+						if test.Time <= config.TresholdFast {
 							fmt.Printf("%s  🚀 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
-						} else if test.Time <= tresholdNormal {
+						} else if test.Time <= config.TresholdNormal {
 							fmt.Printf("%s  🕐 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
 						} else {
 							fmt.Printf("%s  🐌 %s %s (%v seconds)\r\n", suffix, status, test.TestName(), test.Time)
@@ -181,9 +197,9 @@ func PrintTree(node *xunit.Node, indent string) {
 			status = "\033[1;31m⛌\033[0m"
 		}
 
-		if test.Time <= tresholdFast {
+		if test.Time <= config.TresholdFast {
 			fmt.Printf("%s     🚀 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
-		} else if test.Time <= tresholdNormal {
+		} else if test.Time <= config.TresholdNormal {
 			fmt.Printf("%s     🕐 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
 		} else {
 			fmt.Printf("%s     🐌 %s %s (%v seconds)\r\n", indent, status, test.TestName(), test.Time)
