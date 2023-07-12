@@ -170,16 +170,11 @@ func main() {
 	}
 
 	fmt.Println("")
-
-	fmt.Printf("Amount of test(s): %v\r\n", testCount)
 }
-
-var testCount int
 
 func PrintTree(node *xunit.Node, indent string) {
 	fmt.Printf("%s  %s.\r\n", indent, getFriendlyName(node.Name))
 	for _, test := range node.Tests {
-		testCount += 1
 		status := "\033[1;32m✓\033[0m"
 		if test.Result != "Pass" {
 			status = "\033[1;31m⛌\033[0m"

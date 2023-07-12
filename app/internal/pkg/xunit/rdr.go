@@ -179,9 +179,11 @@ func (assembly *Assembly) BuildTree() map[string][]*Node {
 			parts := make([]string, 0)
 			fullNameParts := strings.Split(item.Name, "+")
 			parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
+			parts = append(parts, fullNameParts[1:len(fullNameParts)-1]...)
 			parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")[0])
 
 			for idx, part := range parts {
+
 				var childNode *Node
 
 				for _, child := range currentNode.Children {
@@ -198,6 +200,10 @@ func (assembly *Assembly) BuildTree() map[string][]*Node {
 					}
 
 					currentNode.Children = append(currentNode.Children, childNode)
+				} else {
+					if idx == len(parts)-1 {
+						childNode.Tests = append(childNode.Tests, item)
+					}
 				}
 
 				currentNode = childNode
@@ -223,6 +229,7 @@ func (assembly *Assembly) BuildTree() map[string][]*Node {
 				parts := make([]string, 0)
 				fullNameParts := strings.Split(item.Name, "+")
 				parts = append(parts, fullNameParts[0][strings.LastIndex(fullNameParts[0], ".")+1:])
+				parts = append(parts, fullNameParts[1:len(fullNameParts)-1]...)
 				parts = append(parts, strings.Split(fullNameParts[len(fullNameParts)-1], ".")[0])
 
 				for idx, part := range parts {
