@@ -88,9 +88,9 @@
           <trait name="Hosted Service" value="Db Synchronizer" />
         </traits>
       </test>
-      <test name="A very beautifull test that has" type="CHILI.GraFx.Platform.HostedServices.DBSynchronizer.Tests.Internal.Tasks.Locks.DbSyncerTaskLockTests" method="ALockCanBeAcquiredWhenNoActiveLockIsFound" time="0.0019003" result="Pass">
+      <test name="A very beautifull test that has a display name :-)" type="CHILI.GraFx.Platform.HostedServices.DBSynchronizer.Tests.Internal.Tasks.Locks.DbSyncerTaskLockTests" method="ALockCanBeAcquiredWhenNoActiveLockIsFound" time="0.0019003" result="Pass">
         <traits>
-          <trait name="Hosted Service" value="Db Synchronizer" />
+          <!-- <trait name="Hosted Service" value="Db Synchronizer" /> -->
         </traits>
       </test>
       <test name="CHILI.GraFx.Platform.HostedServices.DBSynchronizer.Tests.Internal.Tasks.Locks.DbSyncerTaskLockTests.ALockCannotBeDeletedWhenSavingFails" type="CHILI.GraFx.Platform.HostedServices.DBSynchronizer.Tests.Internal.Tasks.Locks.DbSyncerTaskLockTests" method="ALockCannotBeDeletedWhenSavingFails" time="0.0007697" result="Fail">

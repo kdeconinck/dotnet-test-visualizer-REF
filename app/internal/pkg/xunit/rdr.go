@@ -478,10 +478,13 @@ func (assembly *Assembly) NestedTestsForTrait(trait Trait) []Test {
 // TestName returns the name of the test.
 func (test *Test) TestName() string {
 	if test.HasDisplayName() {
-		return test.Name
+		if strings.HasSuffix(test.Name, ".") {
+			return test.Name
+		}
+		return fmt.Sprintf("%s.", test.Name)
 	}
 
-	return getFriendlyName(test.Name[strings.LastIndex(test.Name, ".")+1:])
+	return fmt.Sprintf("%s.", getFriendlyName(test.Name[strings.LastIndex(test.Name, ".")+1:]))
 }
 
 func getFriendlyName(inputString string) string {

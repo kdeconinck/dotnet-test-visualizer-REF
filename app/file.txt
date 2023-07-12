@@ -1,0 +1,1192 @@
+    _  _ ___ _____   _____       _    __   ___              _ _            
+   | \| | __|_   _| |_   _|__ __| |_  \ \ / (_)____  _ __ _| (_)______ _ _ 
+  _| .` | _|  | |     | |/ -_|_-<  _|  \ V /| (_-< || / _` | | |_ / -_) '_|
+ (_)_|\_|___| |_|     |_|\___/__/\__|   \_/ |_/__/\_,_\__,_|_|_/__\___|_|  
+
+Amount of assemblies: 1
+End time:             07/12/2023 07:26:01
+
+Assembly:         CHILI.GraFx.Platform.API.Tests.dll - [1;32m✓ Passed (775 of 775 passed).[0m 
+Date / time:      2023-07-12 07:26:01
+Total time:       21.328 seconds.
+
+  # tests:        775
+  # Passed tests: 775
+  # Failed tests: 0
+  # Errors:       0
+
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0100304 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.002421 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0020787 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+RotateClientSecret+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0042623 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+RotateClientSecret+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0021813 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+RotateClientSecret+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0021135 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0042584 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0020422 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.011178 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0042449 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0019027 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+UpdateIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0020769 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0044011 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0091232 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+GetIntegrationPermissions+WhenClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0028408 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+DeleteIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: " "). (0.0043811 seconds)
+  🚀 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+DeleteIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: ""). (0.0020009 seconds)
+  🕐 [1;32m✓[0m CHILI.GraFx.Platform.API.Tests.Modules.Integration.Handlers.IntegrationHandlerTests+DeleteIntegration+WhenTheClientIdIsNotValid.ReturnsBadRequest(clientId: null). (0.0545684 seconds)
+
+  Environment Handler Tests.
+    When Environment Is Not Found.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0051938 seconds)
+
+    When Request Is Not Valid.
+       🕐 [1;32m✓[0m Returns Http Status Code Bad Request. (0.0987442 seconds)
+
+    When Environment Is Found.
+       🕐 [1;32m✓[0m Returns Http Ok With Environment Model. (0.0964499 seconds)
+
+    When User Has No Permissions.
+       🚀 [1;32m✓[0m Returns Http Forbid Result. (0.0367655 seconds)
+
+    When User Has Permissions.
+       🕐 [1;32m✓[0m Returns Http Result Ok. (0.0818942 seconds)
+
+    When Subscription Is Found.
+       🚀 [1;32m✓[0m Returns Http Ok With List Of Basic Environment Models. (0.010249 seconds)
+
+    When Auth Rule Validator Returns False.
+       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0014312 seconds)
+
+    When Auth Rule Returns False.
+       🚀 [1;32m✓[0m Returns Http Forbid. (0.0018856 seconds)
+
+    When Subscription Is Not Found.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0033517 seconds)
+
+
+  Environment Model Tests.
+    The Serialization Implementation.
+       🐌 [1;32m✓[0m Serializes The Data. (0.3416515 seconds)
+
+
+  Environment Manager Tests.
+    The Check If All Environments Belong To Any Subscriptions Async Method.
+       🚀 [1;32m✓[0m Returns Environments. (0.0230489 seconds)
+
+    When The Display Name Is Empty.
+       🚀 [1;32m✓[0m The Name Of The Environment Is Mapped. (0.0242875 seconds)
+
+    When Environment Is Found.
+       🚀 [1;32m✓[0m The Id Of The Environment Is Mapped. (0.0028936 seconds)
+
+    When Environment Is Not Found.
+       🚀 [1;32m✓[0m Null Is Returned. (0.0112685 seconds)
+
+    When Subscription Is Found.
+       🚀 [1;32m✓[0m Returns Environments. (0.0188358 seconds)
+
+    When The Database Is Empty.
+       🚀 [1;32m✓[0m Null Is Returned. (0.0018933 seconds)
+
+    When Environment Does Not Have Display Name.
+       🚀 [1;32m✓[0m Returns Environment Name As Name. (0.002856 seconds)
+
+    When Environment Has Display Name.
+       🚀 [1;32m✓[0m Returns Environment Display Name As Name. (0.0030098 seconds)
+
+    When Subscription Is Not Found.
+       🚀 [1;32m✓[0m Returns Null. (0.0012537 seconds)
+
+
+  Environments Repository Tests.
+    When Subscription Guid Is Found.
+       🚀 [1;32m✓[0m Result Is Not Null. (0.0180261 seconds)
+
+    The Get Environment To Subscription Map Async Method.
+       🕐 [1;32m✓[0m Returns Correct Result. (0.0505142 seconds)
+
+    When Id Is Found.
+       🚀 [1;32m✓[0m Result Is Not Null. (0.0135766 seconds)
+
+    When Subscription Guid Is Not Found.
+       🚀 [1;32m✓[0m Result Is Null. (0.026209 seconds)
+
+    The Has All Method.
+       🚀 [1;32m✓[0m Returns True When All The Uniaue Ids Are Found. (0.0226805 seconds)
+
+    When Guids Are Found.
+       🚀 [1;32m✓[0m Result Is Not Null. (0.0306195 seconds)
+
+    When Id Is Not Found.
+       🚀 [1;32m✓[0m Result Is Null. (0.0113557 seconds)
+
+    When Guids Are Not Found.
+       🚀 [1;32m✓[0m Result Is Null. (0.0083315 seconds)
+
+
+  Services Collection Extensions Tests.
+    When The Application Is Running In Production.
+       🐌 [1;32m✓[0m Auth 0 Is Used As The Storage Provider For Applications. (0.2094337 seconds)
+
+    The Add Application Management Support Function.
+       🚀 [1;32m✓[0m An In Memory Api Storage Is Added. (0.0109623 seconds)
+
+
+  Integration Handler Tests.
+    When The Update Model Is Not Valid.
+       🚀 [1;32m✓[0m Returns Bad Request. (0.0424958 seconds)
+
+    When The Store Was Unable To Fetch The Application.
+       🚀 [1;32m✓[0m Returns Problem. (0.0322094 seconds)
+
+    When Integration Is Not Exist.
+       🐌 [1;32m✓[0m Returns Not Found. (0.1361864 seconds)
+
+    When The Integration Of The Environment Is Not In The Database.
+       🕐 [1;32m✓[0m Returns Not Found. (0.0634313 seconds)
+
+    When More Than One Permission Were Returned.
+       🕐 [1;32m✓[0m Returns Problem. (0.0659387 seconds)
+
+    When The User Has No Permissions.
+       🚀 [1;32m✓[0m Returns Forbid. (0.0179255 seconds)
+
+    When The Integration Is Not Found.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0255503 seconds)
+
+    When The Creation Model Is Not Valid.
+       🚀 [1;32m✓[0m Returns Bad Request. (0.0234716 seconds)
+
+    When Application Permissions Could Not Be Updated.
+       🚀 [1;32m✓[0m Returns Problem. (0.0295568 seconds)
+
+    When The Environment Is Not Found.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0247795 seconds)
+
+    When Integration Environment Is Not Exist.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0213624 seconds)
+
+    When The Update Is Successful.
+       🐌 [1;32m✓[0m Result Should Be Ok With The Correct Data. (0.2826222 seconds)
+
+    When The Store Was Unable To Delete The Application.
+       🕐 [1;32m✓[0m Returns Problem. (0.0586276 seconds)
+
+    When The Application Was Already Deleted.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0101875 seconds)
+
+    When The Store Deleted Application Successfully.
+       🚀 [1;32m✓[0m Returns Ok. (0.0211452 seconds)
+
+    When The Application Was Not Found During Rotate.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0329156 seconds)
+
+    When Could Not Get Integration Permissions Due To Internal Error.
+       🚀 [1;32m✓[0m Returns Problem. (0.0222033 seconds)
+
+    When Fetch Of Available Permissions Failed.
+       🚀 [1;32m✓[0m Returns Problem. (0.0248274 seconds)
+
+    When The Store Was Unable To Create The Application.
+       🚀 [1;32m✓[0m Returns Problem. (0.0384024 seconds)
+
+    When Application Permissions Are Updated.
+       🕐 [1;32m✓[0m Returns Ok Result With Permissions. (0.0798365 seconds)
+
+    When Integration Permissions Are Got.
+       🚀 [1;32m✓[0m Returns Ok Result. (0.0335014 seconds)
+
+    When The User Has Permissions.
+       🚀 [1;32m✓[0m Returns Ok. (0.0094271 seconds)
+
+    When Permission List Is Not Valid.
+       🚀 [1;32m✓[0m Returns Bad Request. (0.0251245 seconds)
+
+    When The Store Contains An Application With The Environment Id.
+       🚀 [1;32m✓[0m Returns Ok. (0.0462947 seconds)
+
+    When The Store Was Unable To Rotate The Client Secret Of The Application.
+       🚀 [1;32m✓[0m Returns Problem. (0.0181217 seconds)
+
+    When Integration Environment Is Not Found.
+       🚀 [1;32m✓[0m Result Should Be Not Found. (0.0159766 seconds)
+
+    When The Store Was Able To Fetch The Application.
+       🚀 [1;32m✓[0m Returns Ok. (0.0096975 seconds)
+
+    When Application Permissions Could Not Be Created.
+       🚀 [1;32m✓[0m Returns Problem. (0.0470266 seconds)
+
+    When Application Permissions Are Created.
+       🚀 [1;32m✓[0m Returns Ok Result With Permissions. (0.0391496 seconds)
+
+    When The Store Contains Applications But None Have The Environment Id.
+       🕐 [1;32m✓[0m Returns Ok. (0.0940559 seconds)
+
+    When The Store Rotated Client Secret Successfully.
+       🚀 [1;32m✓[0m Returns Ok. (0.0117609 seconds)
+
+    When The Store Was Unable To Create Initial Permissions.
+       🚀 [1;32m✓[0m Returns Ok. (0.0142387 seconds)
+
+    When The Environment Does Not Exist.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0187982 seconds)
+
+    When User Has No Permissions.
+       🚀 [1;32m✓[0m Returns Forbid. (0.0171301 seconds)
+
+    When The Store Contains No Applications.
+       🚀 [1;32m✓[0m Returns Ok. (0.0096361 seconds)
+
+    When The Api Is Not Found.
+       🚀 [1;32m✓[0m Returns Problem. (0.0104415 seconds)
+
+    When Update Model Is Not Valid.
+       🚀 [1;32m✓[0m Returns Bad Request. (0.0046908 seconds)
+
+    When The Store Was Able To Create Initial Permissions.
+       🚀 [1;32m✓[0m Returns Ok. (0.0199114 seconds)
+
+    When Integration Update Failed.
+       🚀 [1;32m✓[0m Result Should Be Problem. (0.0214243 seconds)
+
+
+  M 2 M Permissions Create Operation Mapper Tests.
+    When Permissions Can Not Be Mapped.
+       🕐 [1;32m✓[0m Raises Create Exception. (0.0582516 seconds)
+
+    When The Destination Is For The Auth 0 Store.
+       🚀 [1;32m✓[0m Returns Client Grant Create Request. (0.0022003 seconds)
+
+    When The Destination Is For The In Memory Store.
+       🚀 [1;32m✓[0m Returns M 2 M Permissions. (0.0101389 seconds)
+
+
+  M 2 M Application Create Operation Mapper Tests.
+    When The Application Can Be Mapped To M 2 M Application.
+       🐌 [1;32m✓[0m Returns M 2 M Application. (0.1096942 seconds)
+
+    When The Application Can Be Mapped To Client Create Request.
+       🚀 [1;32m✓[0m Returns Client Create Request. (0.0250802 seconds)
+
+    When The Application Can Not Be Mapped.
+       🚀 [1;32m✓[0m Raises Create Exception. (0.0211901 seconds)
+
+
+  M 2 M Permissions Get All Filter Tests.
+    When The Destination Is For The In Memory Store.
+       🕐 [1;32m✓[0m Returns Correct Filter. (0.0507195 seconds)
+
+    When The Filter Can Not Be Created.
+       🚀 [1;32m✓[0m Raises Create Exception. (0.0159757 seconds)
+
+    When The Destination Is For The Auth 0 Store.
+       🚀 [1;32m✓[0m Returns Correct Filter. (0.0051799 seconds)
+
+
+  M 2 M Application Mapper Tests.
+    When The Client Can Be Mapped.
+       🚀 [1;32m✓[0m Returns M 2 M Model. (0.0320218 seconds)
+
+    When The Client Has An Invalid Environment Id In The Meta Data.
+       🚀 [1;32m✓[0m Raises Invalid Data Exception. (0.0242227 seconds)
+
+    When The Client Has No Meta Data.
+       🚀 [1;32m✓[0m Raises Invalid Data Exception. (0.0140453 seconds)
+
+    When Client Is Not M 2 M.
+       🕐 [1;32m✓[0m Raises Invalid Data Exception. (0.0621674 seconds)
+
+    When The Client Has No Environment Id In The Meta Data.
+       🚀 [1;32m✓[0m Raises Invalid Data Exception. (0.0228043 seconds)
+
+
+  M 2 M Permissions Mapper Tests.
+    Map.
+       🚀 [1;32m✓[0m Returns M 2 M Model. (0.0029797 seconds)
+
+
+  M 2 M Permissions Update Operation Mapper Tests.
+    When The Destination Is For The Auth 0 Store.
+       🚀 [1;32m✓[0m Returns Client Grant Update Request. (0.0030591 seconds)
+
+    When Permissions Can Not Be Mapped.
+       🚀 [1;32m✓[0m Throws Create Exception. (0.0175877 seconds)
+
+    When The Destination Is For The In Memory Store.
+       🚀 [1;32m✓[0m Returns M 2 M Application. (0.0020661 seconds)
+
+
+  M 2 M Application Update Operation Mapper Tests.
+    When The Application Can Be Mapped To M 2 M Application.
+       🚀 [1;32m✓[0m Returns M 2 M Application. (0.0096941 seconds)
+
+    When The Application Can Not Be Mapped.
+       🚀 [1;32m✓[0m Throws Create Exception. (0.0052692 seconds)
+
+    When The Application Can Be Mapped To Client Update Request.
+       🚀 [1;32m✓[0m Returns Client Create Request. (0.0036178 seconds)
+
+
+  M 2 M Application Get All Filter Tests.
+    When The Destination Is For The Auth 0 Store.
+       🚀 [1;32m✓[0m Returns Correct Filter. (0.0127791 seconds)
+
+    When The Filter Can Not Be Created.
+       🚀 [1;32m✓[0m Raises Create Exception. (0.0188066 seconds)
+
+    When The Destination Is For The In Memory Store.
+       🚀 [1;32m✓[0m Returns Correct Filter. (0.0047802 seconds)
+
+
+  Auth 0 Api Mapper Tests.
+    Map.
+       🚀 [1;32m✓[0m Returns Api Model. (0.0070969 seconds)
+
+
+  Roles Handler Tests.
+    The Get Roles Function.
+       🚀 [1;32m✓[0m Returns List Of Environment Roles. (0.0034465 seconds)
+
+    The Get Environment Roles Function.
+       🚀 [1;32m✓[0m Returns List Of Environment Roles. (0.0008855 seconds)
+
+
+  Info Handler Tests.
+    The Get Info Function.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0021671 seconds)
+
+
+  Subscription Handler Tests.
+    If Only One Date Is Provided.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0207618 seconds)
+
+    When Authenticated User Has No Access To Subscription.
+       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0405721 seconds)
+
+    When The Subscription Is Not Found In Subscription To Environments Map.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0145497 seconds)
+
+    When User Has Required Permissions.
+       🕐 [1;32m✓[0m Returns Http Ok With Subscription. (0.0797013 seconds)
+
+    When The Group By Is Year.
+       🚀 [1;32m✓[0m Returns Http Ok With Subscription Renders Grouped By Month. (0.040354 seconds)
+
+    When The Subscription Is Not Found When Getting Subscription Details.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0060183 seconds)
+
+    When Authenticated User Has Access To Subscription.
+       🚀 [1;32m✓[0m Returns Correct Result. (0.0266751 seconds)
+
+    When Subscription Is Found.
+       🚀 [1;32m✓[0m Returns Ok Result With User Info. (0.0320189 seconds)
+
+    If End Date Before Start Date.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.001328 seconds)
+
+    When Subscription Is Not Found.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0209579 seconds)
+
+    When Subscription Is Not Accessible.
+       🚀 [1;32m✓[0m Returns Http Status Forbid. (0.0166618 seconds)
+
+    When The Group By Is Not Valid.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0012098 seconds)
+
+    When The Group By Is Month.
+       🚀 [1;32m✓[0m Returns Http Ok With Subscription Renders Grouped By Day. (0.013462 seconds)
+
+    When User Does Not Have Permissions.
+       🚀 [1;32m✓[0m Returns Http Forbid. (0.0025917 seconds)
+
+    When The Date Range Is Provided And Is Valid.
+       🚀 [1;32m✓[0m Returns Http Ok With Subscription Renders For Specified Date Range. (0.0199372 seconds)
+
+    If Any Date Has Invalid Format.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0012655 seconds)
+
+    When User Has No Permissions.
+       🚀 [1;32m✓[0m Returns Http Forbid Result. (0.0099147 seconds)
+
+    When Getting Guids Of Associated Environments Failed.
+       🚀 [1;32m✓[0m Returns Http Problem. (0.0045247 seconds)
+
+
+  Subscription Model Tests.
+    The Incorrect Subscription Type Serialization.
+       🐌 [1;32m✓[0m Serializes The Data. (0.3268096 seconds)
+
+    The Incorrect Subscription License Type Serialization.
+       🐌 [1;32m✓[0m Serializes The Data. (0.1636443 seconds)
+
+    The Serialization Implementation.
+       🚀 [1;32m✓[0m Serializes The Data. (0.0209564 seconds)
+
+
+  Authenticated Subscription Manager Tests.
+    When The Subscription Is Not Found.
+       🚀 [1;32m✓[0m Returns Null. (0.0275913 seconds)
+
+    When User Accessible In The Subscription.
+       🕐 [1;32m✓[0m Returns Subscription User. (0.0744737 seconds)
+
+    When The Subscription Has No Users.
+       🚀 [1;32m✓[0m Returns Subscription Guid With Empty Collection. (0.0199324 seconds)
+
+    When The Subscription Has Users.
+       🚀 [1;32m✓[0m Returns Subscription Guid With Accessible Users In Subscription. (0.022303 seconds)
+
+    When User Is Not Accessible.
+       🚀 [1;32m✓[0m Returns Entity Not Found. (0.003198 seconds)
+
+
+  Subscriptions Repository Tests.
+    When Subscription Is Not Found.
+       🕐 [1;32m✓[0m Returns Null. (0.0876923 seconds)
+
+    When Top Parameter Is Less Than Environment Counts.
+       🐌 [1;32m✓[0m Returns First Top Subscription Environment Renders Grouped By Day. (0.1792715 seconds)
+
+    The Get Many Method.
+       🚀 [1;32m✓[0m Returns Subscriptions With Customer Included. (0.0440102 seconds)
+
+    The Get Async Method.
+       🚀 [1;32m✓[0m Returns Subscriptions With Customer Included. (0.0068853 seconds)
+
+    When Template Designer Seats.
+       🚀 [1;32m✓[0m Returns The Value. (0.0466827 seconds)
+
+    When Subscription Is Found.
+       🚀 [1;32m✓[0m Returns Subscription. (0.0071329 seconds)
+
+    When Top Parameter Is Provided.
+       🐌 [1;32m✓[0m Returns All Total Renders Grouped By Day. (0.7588181 seconds)
+
+    The Has All Method.
+       🚀 [1;32m✓[0m Returns True When All The Unique Ids Are Found. (0.0098064 seconds)
+
+    When Top Parameter Is Not Provided.
+       🐌 [1;32m✓[0m Returns Sum Of All Subscription Renders Grouped By Day. (1.737342 seconds)
+
+    When No Template Designer Seats.
+       🚀 [1;32m✓[0m Returns 0. (0.014794 seconds)
+
+    The Get Subscription To Environments Map Async Method.
+       🚀 [1;32m✓[0m Returns Correct Result. (0.0220267 seconds)
+
+    When Top Parameter Is Bigger Than Environment Counts.
+       🕐 [1;32m✓[0m Returns Environments Sorted By Type And Then By Total Renders Grouped By Day. (0.067048 seconds)
+
+
+  Subscription Manager Tests.
+    If Top Is Not Provided.
+       🚀 [1;32m✓[0m Maps The Renders. (0.0420682 seconds)
+
+    When All Subscriptions Are Found.
+       🚀 [1;32m✓[0m Correct Result Is Returned. (0.0254274 seconds)
+
+    If No Top Is Provided.
+       🚀 [1;32m✓[0m Maps The Renders. (0.0173135 seconds)
+
+    When Customer Is Null.
+       🚀 [1;32m✓[0m Name Equals To Subscription Name. (0.0050136 seconds)
+
+    When Max Environments Is Greater Than Zero.
+       🚀 [1;32m✓[0m The Production Environments Total Is Equal To Max Environments. (0.0190968 seconds)
+
+    When Subscription Is Found.
+       🚀 [1;32m✓[0m Allowed Environment Roles Are Returned. (0.013938 seconds)
+
+    When Max Environments Is Zero.
+       🚀 [1;32m✓[0m The Production Environments Used Is Equal To Production Count. (0.0038976 seconds)
+
+    When Licensed Server Is Not Provided.
+       🚀 [1;32m✓[0m The Last Report Processor Count Equals Zero. (0.0209866 seconds)
+
+    When Some Of Subscriptions Were Not Found.
+       🚀 [1;32m✓[0m Correct Result Is Returned. (0.0196146 seconds)
+
+    If Top Is Provided.
+       🚀 [1;32m✓[0m Maps The Renders. (0.0055687 seconds)
+
+    When The Subscription Is Not Found.
+       🚀 [1;32m✓[0m Null Is Returned. (0.0015799 seconds)
+
+    When Licensed Server Is Provided.
+       🚀 [1;32m✓[0m The Last Report Processor Count Is Mapped. (0.0050101 seconds)
+
+    When Max Environments Is Null.
+       🚀 [1;32m✓[0m The Sandbox Environments Total Is Null. (0.0034929 seconds)
+
+    When Licenses Are Provided.
+       🚀 [1;32m✓[0m The Cores Total Is Mapped. (0.0044461 seconds)
+
+    When Subscription Type Is Incorrect.
+       🚀 [1;32m✓[0m Throws Not Supported Exception. (0.0032989 seconds)
+
+    When The Subscription Is Found.
+       🚀 [1;32m✓[0m The Billing Client Contact Is Mapped. (0.0040565 seconds)
+
+    When The Subscriptions List Is Empty.
+       🚀 [1;32m✓[0m Empty Collection Is Returned. (0.0113544 seconds)
+
+    The Get Guids Of Associated Environments Async Method.
+       🚀 [1;32m✓[0m Correct Result Is Returned. (0.0147335 seconds)
+
+    When Subscription Is Not Found.
+       🚀 [1;32m✓[0m The Entity Not Found Result Is Returned. (0.002958 seconds)
+
+
+  User Management Handler Tests.
+    When Authorization Returns False.
+       🚀 [1;32m✓[0m Returns Http Forbidden. (0.039038 seconds)
+
+    If No First Name Is Provided.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0024428 seconds)
+
+    When User Management Service Throws Identity Server Exception Due To Error.
+       🕐 [1;32m✓[0m Returns Failed Operation Result. (0.0618619 seconds)
+
+    When Update User Environments Are Failed.
+       🚀 [1;32m✓[0m Returns Http Internal Server Error. (0.0225887 seconds)
+
+    When Authorization Rule Check Returns False.
+       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0017313 seconds)
+
+    When Model Is Invalid.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.014954 seconds)
+
+    When User Does Not Match Auth Rule.
+       🚀 [1;32m✓[0m User Does Not Have An Access. (0.004232 seconds)
+
+    When Signature Is Null Or Whitespace.
+       🚀 [1;32m✓[0m Returns Bad Request Operation Result. (0.0094475 seconds)
+
+    When User Id Is Whitespace.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0011442 seconds)
+
+    When User Id Is Null Or Whitespace.
+       🚀 [1;32m✓[0m Returns Bad Request Operation Result. (0.0013063 seconds)
+
+    When The Creation Of The User Fails.
+       🚀 [1;32m✓[0m The Result Should Equals Failed. (0.014028 seconds)
+
+    The User Management Service Is Called With The Correct Arguments.
+       🚀 [1;32m✓[0m The Result Should Equals Failed. (0.0070353 seconds)
+
+    When The Creation Of The User Succeeds.
+       🚀 [1;32m✓[0m The Result Should Equals Ok. (0.0020305 seconds)
+
+    When Signature Is Not Valid.
+       🚀 [1;32m✓[0m Returns Not Found Operation Result. (0.0029675 seconds)
+
+    When Identity Server Generate Error During User Updating.
+       🚀 [1;32m✓[0m User Is Not Deactivated And Returns Problem. (0.0320841 seconds)
+
+    When User Management Service Returns Null.
+       🚀 [1;32m✓[0m Logs Info Message. (0.0459929 seconds)
+
+    When User Management Service Successfully Returns User.
+       🚀 [1;32m✓[0m Returns Correct Email Status. (0.0060969 seconds)
+
+    When User Exists And Not Deactivated In The Subscription.
+       🚀 [1;32m✓[0m User Is Not Activated. (0.0098019 seconds)
+
+    When Migration Service Throws Migration Error Exception Due To Error.
+       🚀 [1;32m✓[0m Logs Error. (0.0128714 seconds)
+
+    When User Exists And Deactivated In The Subscription.
+       🚀 [1;32m✓[0m User Is Activated. (0.0081127 seconds)
+
+    When Request Is Not Valid.
+       🚀 [1;32m✓[0m Returns Bad Request Result. (0.0030287 seconds)
+
+    When Model Is Valid.
+       🚀 [1;32m✓[0m Return Invited Result. (0.0127365 seconds)
+
+    When User Does Not Exist.
+       🚀 [1;32m✓[0m Returns Unauthorized. (0.0048399 seconds)
+
+    When Role Is Not Valid For Current Subscription.
+       🚀 [1;32m✓[0m Return Bad Request. (0.0077464 seconds)
+
+    When Manager Returns Operation Is Not Valid Error Result.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0076824 seconds)
+
+    When The User Does Not Exist.
+       🚀 [1;32m✓[0m User Is Not Found. (0.0119639 seconds)
+
+    When Environments Do Not Exist.
+       🚀 [1;32m✓[0m Return Not Found. (0.0151655 seconds)
+
+    When User Exists And Not Active In The Subscription.
+       🚀 [1;32m✓[0m User Is Not Deactivated. (0.0037925 seconds)
+
+    When Migration Server Returns Ok Result.
+       🚀 [1;32m✓[0m Returns Ok Result. (0.0089923 seconds)
+
+    When Subscription Does Not Exist.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0033336 seconds)
+
+    When User Entity Is Not Found.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0068847 seconds)
+
+    When Authenticated User Id Is Null.
+       🚀 [1;32m✓[0m Return Unauthorized. (0.0018862 seconds)
+
+    When Inviting User Does Not Exist.
+       🚀 [1;32m✓[0m Returns Unauthorized. (0.0042877 seconds)
+
+    If No Last Name Is Provided.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.013533 seconds)
+
+    When User Exists.
+       🚀 [1;32m✓[0m Return Get Authenticated User Model. (0.006861 seconds)
+
+    When Incorrect Parameters.
+       🚀 [1;32m✓[0m User Is Not Deactivated And Bad Request Is Returned. (0.0012763 seconds)
+
+    When The Signature Is Invalid.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0035646 seconds)
+
+    When Signature Is Null Or White Space.
+       🚀 [1;32m✓[0m Returns Bad Request Result. (0.0019227 seconds)
+
+    When Request Is Valid.
+       🚀 [1;32m✓[0m Returns Bad Request Result. (0.0058255 seconds)
+
+    When Invite Users Async Has Unexpected Result.
+       🚀 [1;32m✓[0m Return Problem. (0.0064531 seconds)
+
+    When Model Is Null.
+       🚀 [1;32m✓[0m Returns Bad Request Result. (0.0011883 seconds)
+
+    When The User Was Not Invited To This Subscription.
+       🚀 [1;32m✓[0m Returns Not Found. (0.0089921 seconds)
+
+    When User Not Found.
+       🚀 [1;32m✓[0m Returns Not Found Result. (0.0076301 seconds)
+
+    When The User Already Exists.
+       🚀 [1;32m✓[0m The Result Should Equals User Already Exists. (0.0032911 seconds)
+
+    When Identity Server Generate Error During User Getting.
+       🚀 [1;32m✓[0m User Is Not Deactivated And Returns Problem. (0.0035381 seconds)
+
+    When The Model Is Invalid.
+       🚀 [1;32m✓[0m Returns Bad Request Operation Result. (0.0022131 seconds)
+
+    When User Is Not Found During Updating.
+       🚀 [1;32m✓[0m User Is Not Found. (0.0037114 seconds)
+
+    When No Model Is Provided.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0011871 seconds)
+
+    When The Update Of The User Fails.
+       🚀 [1;32m✓[0m The Result Should Equals Failed. (0.0019951 seconds)
+
+    When The Model Is Null.
+       🚀 [1;32m✓[0m Returns Bad Request Operation Result. (0.0012342 seconds)
+
+    When The User Not Found.
+       🚀 [1;32m✓[0m The Result Should Equals Not Found. (0.0096825 seconds)
+
+    When User Environments Are Updated Successfully.
+       🚀 [1;32m✓[0m Returns Http Ok. (0.0078822 seconds)
+
+    When The Signature Is Null Or White Space.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0019353 seconds)
+
+    When User Exists And Active In The Subscription.
+       🚀 [1;32m✓[0m User Is Deactivated. (0.0123786 seconds)
+
+
+  User Manager Tests.
+    When User Is Not Included In Provided Subscription.
+       🚀 [1;32m✓[0m Does Not Update Roles And Returns Operation Is Not Valid Error Result. (0.0275911 seconds)
+
+    When The User Ha No Others Roles.
+       🕐 [1;32m✓[0m Return Operation Success Result. (0.0576734 seconds)
+
+    When The Subscription Is Not Found.
+       🚀 [1;32m✓[0m Returns Entity Not Found Result. (0.0052739 seconds)
+
+    When The User Has No Roles In Other Subscriptions.
+       🚀 [1;32m✓[0m Return Operation Success Result. (0.0032211 seconds)
+
+    When Environment Roles Contain New Role For Existing Environment.
+       🐌 [1;32m✓[0m Updates Roles For The Environment And Returns Success Result. (0.1022966 seconds)
+
+    When Try To Update TD User With TD And SA.
+       🚀 [1;32m✓[0m Returns Success Result. (0.0260193 seconds)
+
+    When No More Template Designer Seats Available And Not Assigning A Template Designer Seat Role.
+       🚀 [1;32m✓[0m Does Not Update Roles And Returns Operation Is Not Valid Error Result. (0.0062872 seconds)
+
+    When The Subscription Is Found When Not Assigning The Content Administrator Role.
+       🚀 [1;32m✓[0m Returns Success Result. (0.0171863 seconds)
+
+    When The Subscription Is Not Found When Assigning The Content Administrator Role.
+       🚀 [1;32m✓[0m Returns Entity Not Found Result. (0.007275 seconds)
+
+    When User Is Found.
+       🚀 [1;32m✓[0m Return Get Authenticated User Model. (0.0224054 seconds)
+
+    When The User Has Roles In Environments Of The Subscription.
+       🚀 [1;32m✓[0m Return Operation Success Result. (0.0425581 seconds)
+
+    When There Are Additional SA.
+       🕐 [1;32m✓[0m Remove Subscription Role And Returns Success Result. (0.0587563 seconds)
+
+    When The User Does Has The Role.
+       🕐 [1;32m✓[0m Adds New Roles And Returns Success Result. (0.0892001 seconds)
+
+    When Failed Delete User Because Not Found.
+       🚀 [1;32m✓[0m Returns Entity Not Found Result. (0.0057108 seconds)
+
+    When Failed To Get User Because Service Returns Null.
+       🚀 [1;32m✓[0m Returns Entity Not Found Error Result. (0.0028155 seconds)
+
+    When Try To Delete The Last Subscription Administrator.
+       🚀 [1;32m✓[0m Returns Operation Is Not Valid Result. (0.0118881 seconds)
+
+    When Environment Roles Contain New Environment And Updated Role For Existing Environment.
+       🕐 [1;32m✓[0m Adds New Environment Role And Updates Existing Role And Returns Success Result. (0.0668981 seconds)
+
+    When Environment Roles Contain Environment Which User Did Not Have Before.
+       🚀 [1;32m✓[0m Adds New Environment Role And Returns Success Result. (0.0203516 seconds)
+
+    When Delete Not SA Or Current User Is SA And Delete Another.
+       🚀 [1;32m✓[0m Remove Subscription Role And Returns Success Result. (0.0097891 seconds)
+
+    When Provided Environments Are Not Belong To Any Subscription.
+       🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0031295 seconds)
+
+    When User Id Is Not Found During Getting.
+       🚀 [1;32m✓[0m Returns Entity Not Found Error Result. (0.0122778 seconds)
+
+    When Requested User Exists.
+       🚀 [1;32m✓[0m Returns Correct Update Result. (0.0229487 seconds)
+
+    When Failed To Get User Because Service Throws Identity Server Error.
+       🚀 [1;32m✓[0m Does Not Update Roles And Returns Service Error Result. (0.003213 seconds)
+
+    When User Is Not Found.
+       🚀 [1;32m✓[0m Returns Entity Not Found Error Result. (0.0022621 seconds)
+
+    When The Subscription Does Not Support The Content Administrator Role When Not Assigning The Content Administrator Role.
+       🚀 [1;32m✓[0m Returns Success Result. (0.0063297 seconds)
+
+    When User Id Is Not Found.
+       🚀 [1;32m✓[0m Returns Entity Not Found Error Result. (0.0029904 seconds)
+
+    When The User Does Not Has The Role.
+       🕐 [1;32m✓[0m Adds New Roles And Returns Success Result. (0.072154 seconds)
+
+    Always.
+       🕐 [1;32m✓[0m Does Not Change Non Subscription Roles During Update. (0.0530605 seconds)
+
+    When User Id Is Not Found During Update.
+       🚀 [1;32m✓[0m Returns Entity Not Found Error Result. (0.0126686 seconds)
+
+    When The Subscription Does Not Support The Content Administrator Role When Assigning The Content Administrator Role.
+       🚀 [1;32m✓[0m Returns Operation Is Not Valid Result. (0.0070163 seconds)
+
+    When User Does Not Have Role To Delete.
+       🚀 [1;32m✓[0m Returns Success Result. (0.004817 seconds)
+
+    When Failed Delete User Because Failed.
+       🚀 [1;32m✓[0m Returns Service Error Result. (0.0133661 seconds)
+
+    When The User Is Deactivated In Subscription And Has Roles In Other Subscriptions.
+       🚀 [1;32m✓[0m Subscription Is Deleted From Subscription Ids And Deactivated Subscriptions. (0.0081293 seconds)
+
+    When The Subscription Supports The Content Administrator Role When Assigning The Content Administrator Role.
+       🚀 [1;32m✓[0m Returns Success Result. (0.0176774 seconds)
+
+    When The Id Of The User Matches The Id Of The Authenticated User.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0011749 seconds)
+
+    When Failed To Update User Because Service Returns Failed.
+       🚀 [1;32m✓[0m Returns Service Error Result. (0.0109146 seconds)
+
+    When Environment Roles Contain Empty Role For Existing Environment.
+       🚀 [1;32m✓[0m Removes Existing Environment Role And Returns Success Result. (0.008441 seconds)
+
+    When No More Template Designer Seats Available And Assigning A Template Designer Seat Role.
+       🚀 [1;32m✓[0m Does Not Update Roles And Returns Operation Is Not Valid Error Result. (0.0134283 seconds)
+
+    When Try To Delete Not The Last Subscription Administrator.
+       🚀 [1;32m✓[0m Adds New Roles And Returns Success Result. (0.0181317 seconds)
+
+    When Requested User Does Not Exist Or Service Throws An Error.
+       🚀 [1;32m✓[0m Returns Failed Update Result. (0.003305 seconds)
+
+    When Try To Add Template Designer Role When Max Template Designer Seats Is Zero.
+       🚀 [1;32m✓[0m Adds New Roles And Returns Success Result. (0.0204013 seconds)
+
+    When There Are No Additional SA.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0091736 seconds)
+
+    When Environment Roles Contain Environment With The Same Role As Before.
+       🚀 [1;32m✓[0m Updates Environment Roles With The Same Info And Returns Success Result. (0.0106753 seconds)
+
+    When The User Has Roles In Other Subscriptions.
+       🚀 [1;32m✓[0m Return Operation Success Result. (0.0122466 seconds)
+
+
+  User Environments Model Validator Tests.
+    If Model Is Valid.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.0189394 seconds)
+
+    If Environment Roles Are Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013106 seconds)
+
+    If Model Have Both EU And EA Roles For The Same Environment.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013329 seconds)
+
+    If Environment Roles Have Duplicated Roles.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012331 seconds)
+
+  Trait: Feature - User Management API
+
+  User Management Handler Tests.
+    When Mapping Of Subscriptions With Environments Returned Error Result.
+       🚀 [1;32m✓[0m The Result Should Equals Unauthorized. (0.0043105 seconds)
+
+    If No User Id Is Provided.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0012459 seconds)
+
+    When Subscription Does Not Exist Or Not Accessible.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0170668 seconds)
+
+    When Correct Parameters.
+       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0182336 seconds)
+
+    When The Model Is Valid.
+       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0331981 seconds)
+
+    When No Permissions.
+       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0020637 seconds)
+
+    When Role Deleted With Service Error Or Success Or Entity Not Found Or Operation Is Not Valid Result.
+       🚀 [1;32m✓[0m Returns Http Result. (0.0083886 seconds)
+
+    When Incorrect Parameters.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0019678 seconds)
+
+
+  User Invitations Manager Tests.
+    When Called User Management Service Invite Users Async.
+       🚀 [1;32m✓[0m The User Management Service Is Called With The Correct Arguments. (0.0290475 seconds)
+
+    When The Creation Of The User Fails.
+       🕐 [1;32m✓[0m The Status Should Equals Failure. (0.0782516 seconds)
+
+    When User Invitation Result Model User Is Not Null.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0253293 seconds)
+
+    When Subscription Does Not Exist.
+       🚀 [1;32m✓[0m The Result Should Be False. (0.0018891 seconds)
+
+    When User Invitation Result Model User Is Null.
+       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0062982 seconds)
+
+    When Subscription Does Exist.
+       🚀 [1;32m✓[0m The Result Should Be True. (0.00124 seconds)
+
+    When The Existing User Model Is Null.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0327383 seconds)
+
+    When The Creation Of The User Succeeds.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0071833 seconds)
+
+    When Environments Are Duplicated.
+       🕐 [1;32m✓[0m The User Management Service Is Called Without Duplicated Environments. (0.0634743 seconds)
+
+    When User Is Chili Admin.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0162853 seconds)
+
+    When The User Customer Guid Is Not The Same.
+       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0118485 seconds)
+
+    When Environment Role Identifier Is Not Valid.
+       🚀 [1;32m✓[0m Throw Not Supported Exception. (0.0043631 seconds)
+
+    When The Existing User Model Is Not Null.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0489159 seconds)
+
+    When Sending Password Reset Email Failed.
+       🚀 [1;32m✓[0m The Status Should Equals Sending Password Reset Email Failure. (0.0059228 seconds)
+
+    When Customer Guid Is Null.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0055816 seconds)
+
+    When One User Is Successfully Created And One Not.
+       🚀 [1;32m✓[0m The Statuses Should Equals Success And Failure. (0.0281261 seconds)
+
+    When Environemnt Role Is Forbidden In Subscription.
+       🚀 [1;32m✓[0m Operation Is Not Valid Result. (0.0064883 seconds)
+
+    When Provided Environments Are Not Belong To Any Subscription.
+       🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0110981 seconds)
+
+    When Emails Are Duplicated.
+       🚀 [1;32m✓[0m The Result Should Contain Unique Email. (0.013415 seconds)
+
+    When User Is EA Or SA.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0123255 seconds)
+
+
+  User Accessible Subscriptions Model Validator Tests.
+    If Email Is Invalid.
+       🐌 [1;32m✓[0m Should Return Invalid Result. (0.112315 seconds)
+
+    If Email Is Valid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013865 seconds)
+
+    If Email Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012818 seconds)
+
+    If Email Is White Space.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013728 seconds)
+
+    If Email Is Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012995 seconds)
+
+
+  Mark User Migrated Model Validator Tests.
+    If Email Is Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0237639 seconds)
+
+    If Email Is White Space.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012639 seconds)
+
+    If Email Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013525 seconds)
+
+    If Email Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013599 seconds)
+
+    If Email Is Valid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012698 seconds)
+
+
+  Add User Model Validator Tests.
+    If Email Is White Space.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0048747 seconds)
+
+    If Email Is Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012658 seconds)
+
+    If Email Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001332 seconds)
+
+    If Last Name Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012324 seconds)
+
+    If First Name Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001211 seconds)
+
+    If All Is Valid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012103 seconds)
+
+    If Email Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012125 seconds)
+
+
+  Invite Users Model Validator Tests.
+    If Data Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0018349 seconds)
+
+    If Data Is Valid.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.0019878 seconds)
+
+
+  User Update Model Validator Tests.
+    If Data Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0020376 seconds)
+
+    If Data Is Valid.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.001212 seconds)
+
+  Trait: Type - Unit Test
+
+  User Management Handler Tests.
+    When Mapping Of Subscriptions With Environments Returned Error Result.
+       🚀 [1;32m✓[0m The Result Should Equals Unauthorized. (0.0043105 seconds)
+
+    If No User Id Is Provided.
+       🚀 [1;32m✓[0m The Result Should Equals Bad Request. (0.0012459 seconds)
+
+    When Subscription Does Not Exist Or Not Accessible.
+       🚀 [1;32m✓[0m Returns Http Not Found. (0.0170668 seconds)
+
+    When Correct Parameters.
+       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0182336 seconds)
+
+    When The Model Is Valid.
+       🚀 [1;32m✓[0m Delete Subscription Role And Return Result Ok. (0.0331981 seconds)
+
+    When No Permissions.
+       🚀 [1;32m✓[0m Returns Http Forbidden. (0.0020637 seconds)
+
+    When Role Deleted With Service Error Or Success Or Entity Not Found Or Operation Is Not Valid Result.
+       🚀 [1;32m✓[0m Returns Http Result. (0.0083886 seconds)
+
+    When Incorrect Parameters.
+       🚀 [1;32m✓[0m Returns Http Bad Request. (0.0019678 seconds)
+
+
+  User Invitations Manager Tests.
+    When Called User Management Service Invite Users Async.
+       🚀 [1;32m✓[0m The User Management Service Is Called With The Correct Arguments. (0.0290475 seconds)
+
+    When The Creation Of The User Fails.
+       🕐 [1;32m✓[0m The Status Should Equals Failure. (0.0782516 seconds)
+
+    When User Invitation Result Model User Is Not Null.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0253293 seconds)
+
+    When Subscription Does Not Exist.
+       🚀 [1;32m✓[0m The Result Should Be False. (0.0018891 seconds)
+
+    When User Invitation Result Model User Is Null.
+       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0062982 seconds)
+
+    When Subscription Does Exist.
+       🚀 [1;32m✓[0m The Result Should Be True. (0.00124 seconds)
+
+    When The Existing User Model Is Null.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0327383 seconds)
+
+    When The Creation Of The User Succeeds.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0071833 seconds)
+
+    When Environments Are Duplicated.
+       🕐 [1;32m✓[0m The User Management Service Is Called Without Duplicated Environments. (0.0634743 seconds)
+
+    When User Is Chili Admin.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0162853 seconds)
+
+    When The User Customer Guid Is Not The Same.
+       🚀 [1;32m✓[0m The Status Should Equals Failure. (0.0118485 seconds)
+
+    When Environment Role Identifier Is Not Valid.
+       🚀 [1;32m✓[0m Throw Not Supported Exception. (0.0043631 seconds)
+
+    When The Existing User Model Is Not Null.
+       🚀 [1;32m✓[0m The Status Should Equals Success. (0.0489159 seconds)
+
+    When Sending Password Reset Email Failed.
+       🚀 [1;32m✓[0m The Status Should Equals Sending Password Reset Email Failure. (0.0059228 seconds)
+
+    When Customer Guid Is Null.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0055816 seconds)
+
+    When One User Is Successfully Created And One Not.
+       🚀 [1;32m✓[0m The Statuses Should Equals Success And Failure. (0.0281261 seconds)
+
+    When Environemnt Role Is Forbidden In Subscription.
+       🚀 [1;32m✓[0m Operation Is Not Valid Result. (0.0064883 seconds)
+
+    When Provided Environments Are Not Belong To Any Subscription.
+       🚀 [1;32m✓[0m Belonging Of Environments Is Checked. (0.0110981 seconds)
+
+    When Emails Are Duplicated.
+       🚀 [1;32m✓[0m The Result Should Contain Unique Email. (0.013415 seconds)
+
+    When User Is EA Or SA.
+       🚀 [1;32m✓[0m Return Operation Is Not Valid Result. (0.0123255 seconds)
+
+
+  User Accessible Subscriptions Model Validator Tests.
+    If Email Is Invalid.
+       🐌 [1;32m✓[0m Should Return Invalid Result. (0.112315 seconds)
+
+    If Email Is Valid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013865 seconds)
+
+    If Email Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012818 seconds)
+
+    If Email Is White Space.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013728 seconds)
+
+    If Email Is Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012995 seconds)
+
+
+  Mark User Migrated Model Validator Tests.
+    If Email Is Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0237639 seconds)
+
+    If Email Is White Space.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012639 seconds)
+
+    If Email Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013525 seconds)
+
+    If Email Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0013599 seconds)
+
+    If Email Is Valid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012698 seconds)
+
+
+  Add User Model Validator Tests.
+    If Email Is White Space.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0048747 seconds)
+
+    If Email Is Empty.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012658 seconds)
+
+    If Email Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001332 seconds)
+
+    If Last Name Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012324 seconds)
+
+    If First Name Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.001211 seconds)
+
+    If All Is Valid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012103 seconds)
+
+    If Email Is Null.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0012125 seconds)
+
+
+  Invite Users Model Validator Tests.
+    If Data Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0018349 seconds)
+
+    If Data Is Valid.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.0019878 seconds)
+
+
+  User Update Model Validator Tests.
+    If Data Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0020376 seconds)
+
+    If Data Is Valid.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.001212 seconds)
+
+
+  Date Range String Validator Tests.
+    If Both Dates Are Valid.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.0468458 seconds)
+
+    If Any Date Is Invalid.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0029178 seconds)
+
+    If Start Date Is Higher Than End Date.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0017474 seconds)
+
+    If Start Date Is In The Future.
+       🚀 [1;32m✓[0m Should Return Invalid Result. (0.0016046 seconds)
+
+    If Both Dates Are Null.
+       🚀 [1;32m✓[0m Should Return Valid Result. (0.0012099 seconds)
+
+
