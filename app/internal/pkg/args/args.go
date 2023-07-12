@@ -31,6 +31,27 @@ import (
 	"os"
 )
 
+// FindNamedSingle returns the value of a "named" argument if it's found.
+// It returns a NON <nil> error if either the "named" argument hasn't been found, or when the "named" argument doesn't
+// have a value.
+func FindNamedSingle(key string) (string, error) {
+	var args = os.Args[1:]
+
+	for idx, arg := range args {
+		if arg == key && idx >= len(args)-1 {
+			return "", fmt.Errorf("no value found for arg '%s'", key)
+		}
+
+		if arg == key && len(args) >= idx {
+			valuePos := idx + 1
+
+			return args[valuePos], nil
+		}
+	}
+
+	return "", fmt.Errorf("arg '%s' not found", key)
+}
+
 // FindNamed returns the value(s) of a "named" argument if it's found.
 // It returns a NON <nil> error if either the "named" argument hasn't been found, or when any of the "named" arguments
 // doesn't have a value.
